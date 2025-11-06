@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import IconFaceBook from '@/components/icons/icon-facebook'
 import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react'
 import IconTwitter from '@/components/icons/icon-twitter'
@@ -7,206 +7,143 @@ import IconLinkedin from '@/components/icons/icon-linkedin'
 import { buttonVariants } from '@/components/ui/button'
 import Image from 'next/image'
 
+const socialLinks = [
+    { href: 'https://www.instagram.com/', icon: IconInstagram, label: 'Instagram' },
+    { href: 'https://www.facebook.com/', icon: IconFaceBook, label: 'Facebook' },
+    { href: 'https://www.linkedin.com/', icon: IconLinkedin, label: 'LinkedIn' },
+    { href: 'https://twitter.com/', icon: IconTwitter, label: 'Twitter' },
+]
+
 export default function Footer() {
     return (
-        <footer className="bg-primary mt-auto">
+        <footer className="mt-auto text-white bg-gradient-to-b from-[#1f1c1f] via-[#181618] to-[#0f0e0f]">
             <div className="container">
-                <div className="text-gray-light flex flex-col justify-between gap-6 pt-14 lg:flex-row lg:gap-14 lg:pt-20">
-                    <div className="w-full space-y-5 lg:max-w-sm lg:pb-12">
-                        <Link href="/" className="inline-block">
+                <div className="flex flex-col items-center gap-12 py-16">
+                    <div className="max-w-2xl space-y-5 text-center">
+                        <Link href="/" className="inline-block" aria-label="Inicio Ecofet">
                             <Image
-                                src="/images/logo-vitalis.svg"
-                                alt="Clínica Vitalis"
-                                width={120}
-                                height={28}
-                                className="h-8 w-auto md:h-10 lg:h-12 object-contain"
-                                style={{ filter: 'drop-shadow(0px 0px 6px rgba(134, 40, 40, 0.15))' }}
+                                src="/imagenes-ecofet/ecofetlogo.svg"
+                                alt="Logotipo Ecofet"
+                                width={280}
+                                height={140}
+                                className="mx-auto h-auto w-56 md:w-72"
+                                priority
                             />
                         </Link>
-                        <p>
-                            Ofrecemos servicios de salud de calidad con compasión y confianza. Su bienestar es nuestra máxima prioridad en cada paso del proceso.
+                        <p className="text-sm text-gray-light">
+                            Tratamientos médicos estéticos de autor con calidez boutique. Creamos experiencias
+                            personalizadas que honran tu belleza, combinando protocolos de última generación,
+                            seguimiento cercano y espacios diseñados para relajarte.
                         </p>
-                        <Link href="/contact-us" className={buttonVariants()}>
-                            Consúltanos
+                        <Link
+                            href="/contact-us"
+                            className={`${buttonVariants()} inline-flex items-center gap-2 bg-secondary px-6 text-white hover:bg-[#b58c4b]`}
+                        >
+                            Agenda una consulta
                             <ArrowUpRight className="size-5" />
                         </Link>
-                        <div className="mt-5 flex gap-5">
-                            <Link
-                                href="https://www.facebook.com/sharer/sharer.php?u=https://healthcare-theme-html.vercel.app/"
-                                target="_blank"
-                                className="grid size-8 place-content-center rounded-full border border-gray-200 text-gray-100 opacity-70 transition hover:opacity-100"
-                            >
-                                <IconFaceBook className="size-5 shrink-0" />
-                                <span className="sr-only">Facebook</span>
-                            </Link>
-                            <Link
-                                href="https://twitter.com/intent/tweet?url=https://healthcare-theme-html.vercel.app/&text="
-                                target="_blank"
-                                className="grid size-8 place-content-center rounded-full border border-gray-200 text-gray-100 opacity-70 transition hover:opacity-100"
-                            >
-                                <IconTwitter className="size-5 shrink-0" />
-                                <span className="sr-only">Twitter</span>
-                            </Link>
-                            <Link
-                                href="https://www.instagram.com/?url=https%3A%2F%2Fhealthcare-theme-html.vercel.app%2F"
-                                target="_blank"
-                                className="grid size-8 place-content-center rounded-full border border-gray-200 text-gray-100 opacity-70 transition hover:opacity-100"
-                            >
-                                <IconInstagram className="size-5 shrink-0" />
-                                <span className="sr-only">Instagram</span>
-                            </Link>
-                            <Link
-                                href="https://www.linkedin.com/shareArticle?mini=true&url=https://healthcare-theme-html.vercel.app/"
-                                target="_blank"
-                                className="grid size-8 place-content-center rounded-full border border-gray-200 text-gray-100 opacity-70 transition hover:opacity-100"
-                            >
-                                <IconLinkedin className="size-5 shrink-0" />
-                                <span className="sr-only">LinkedIn</span>
-                            </Link>
+                        <div className="flex justify-center gap-3 pt-4">
+                            {socialLinks.map(({ href, icon: Icon, label }) => (
+                                <Link
+                                    key={label}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="grid size-9 place-content-center rounded-full border border-white/20 bg-white/10 text-white transition hover:border-secondary/50 hover:text-secondary"
+                                >
+                                    <Icon className="size-5" />
+                                    <span className="sr-only">{label}</span>
+                                </Link>
+                            ))}
                         </div>
                     </div>
-                    <div className="border-white/10 lg:border-x-2 lg:px-10 lg:pb-12 xl:px-20">
-                        <h2 className="border-secondary mb-5 inline-block border-b pb-1.5 text-xl font-bold whitespace-nowrap text-white lg:mb-8 lg:text-2xl">
-                            Nuestro horario
-                        </h2>
-                        <div className="flex flex-row flex-wrap gap-5 sm:flex-nowrap sm:gap-10 lg:flex-col lg:gap-5">
-                            <div className="space-y-1">
-                                <h3>Lunes a viernes</h3>
-                                <p>9:00 a. m. - 5:00 p. m.</p>
+
+                    <div className="grid w-full max-w-4xl gap-8 text-sm text-center sm:text-left sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+                        <div className="space-y-4">
+                            <h2 className="text-lg font-semibold text-secondary">Contáctanos</h2>
+                            <div className="flex items-start gap-3 text-gray-light">
+                                <MapPin className="mt-0.5 size-4 text-secondary" />
+                                <p>
+                                    Av. Belleza 1280, Piso 5
+                                    <br />
+                                    Recoleta, Buenos Aires
+                                </p>
                             </div>
-                            <div className="space-y-1">
-                                <h3>Sábados</h3>
-                                <p>9:00 a. m. - 12:00 p. m.</p>
+                            <div className="flex items-center gap-3 text-gray-light">
+                                <Phone className="size-4 text-secondary" />
+                                <Link href="tel:+541123456789" className="hover:text-secondary">
+                                    +54 11 2345 6789
+                                </Link>
+                            </div>
+                            <div className="flex items-center gap-3 text-gray-light">
+                                <Mail className="size-4 text-secondary" />
+                                <Link href="mailto:hola@ecofet.com" className="hover:text-secondary">
+                                    hola@ecofet.com
+                                </Link>
                             </div>
                         </div>
-                    </div>
-                    <div className="grid gap-8 pb-7 sm:grid-cols-2 lg:flex lg:gap-5 lg:pb-12 2xl:gap-8">
-                        <div className="min-w-44 xl:min-w-48">
-                            <h2 className="border-secondary mb-5 inline-block border-b pb-1.5 text-xl font-bold text-white lg:mb-8 lg:text-2xl">
-                                Servicios
-                            </h2>
-                            <ul className="flex flex-col gap-3">
+
+                        <div className="space-y-4">
+                            <h2 className="text-lg font-semibold text-secondary">Enlaces rápidos</h2>
+                            <ul className="flex flex-col gap-2 text-gray-light">
                                 <li>
-                                    <Link
-                                        href="/about-us"
-                                        className="group inline-flex items-center"
-                                    >
-                                        <span className="bg-secondary h-1 w-0 rounded-full duration-300 ease-in-out group-hover:mr-2 group-hover:w-2.5"></span>
+                                    <Link href="/services" className="transition hover:text-secondary">
+                                        Tratamientos
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/about-us" className="transition hover:text-secondary">
                                         Nosotros
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link
-                                        href="/services"
-                                        className="group inline-flex items-center"
-                                    >
-                                        <span className="bg-secondary h-1 w-0 rounded-full duration-300 ease-in-out group-hover:mr-2 group-hover:w-2.5"></span>
-                                        Servicios
+                                    <Link href="/doctors" className="transition hover:text-secondary">
+                                        Especialistas
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link
-                                        href="/doctors"
-                                        className="group inline-flex items-center"
-                                    >
-                                        <span className="bg-secondary h-1 w-0 rounded-full duration-300 ease-in-out group-hover:mr-2 group-hover:w-2.5"></span>
-                                        Doctores
+                                    <Link href="/faq" className="transition hover:text-secondary">
+                                        Preguntas frecuentes
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link
-                                        href="/contact-us"
-                                        className="group inline-flex items-center"
-                                    >
-                                        <span className="bg-secondary h-1 w-0 rounded-full duration-300 ease-in-out group-hover:mr-2 group-hover:w-2.5"></span>
+                                    <Link href="/contact-us" className="transition hover:text-secondary">
                                         Contacto
                                     </Link>
                                 </li>
                             </ul>
                         </div>
-                        <div className="min-w-44 xl:min-w-48">
-                            <h2 className="border-secondary mb-5 inline-block border-b pb-1.5 text-xl font-bold text-white lg:mb-8 lg:text-2xl">
-                                Recursos
-                            </h2>
-                            <ul className="flex flex-col gap-3">
+
+                        <div className="space-y-4">
+                            <h2 className="text-lg font-semibold text-secondary">Horarios boutique</h2>
+                            <ul className="space-y-2 text-gray-light">
                                 <li>
-                                    <Link
-                                        href="/faq"
-                                        className="group inline-flex items-center"
-                                    >
-                                        <span className="bg-secondary h-1 w-0 rounded-full duration-300 ease-in-out group-hover:mr-2 group-hover:w-2.5"></span>
-                                        Preguntas frecuentes
-                                    </Link>
+                                    <span className="text-white">Lunes a viernes</span>
+                                    <br />
+                                    10:00 - 19:00 hs
                                 </li>
                                 <li>
-                                    <Link
-                                        href="/privacy-policy"
-                                        className="group inline-flex items-center"
-                                    >
-                                        <span className="bg-secondary h-1 w-0 rounded-full duration-300 ease-in-out group-hover:mr-2 group-hover:w-2.5"></span>
-                                        Política de privacidad
-                                    </Link>
+                                    <span className="text-white">Sábados</span>
+                                    <br />
+                                    10:00 - 14:00 hs
                                 </li>
                                 <li>
-                                    <Link
-                                        href="/terms-conditions"
-                                        className="group inline-flex items-center"
-                                    >
-                                        <span className="bg-secondary h-1 w-0 rounded-full duration-300 ease-in-out group-hover:mr-2 group-hover:w-2.5"></span>
-                                        Términos y condiciones
-                                    </Link>
+                                    <span className="text-white">Atención personalizada</span>
+                                    <br />
+                                    Con reserva previa
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div className="grid divide-white/10 border-y-2 border-white/10 lg:grid-cols-3 lg:divide-x-2">
-                    <div className="text-gray-light flex items-start gap-2.5 py-4 sm:items-center lg:justify-center lg:px-4 lg:py-10">
-                        <MapPin className="text-primary size-6 shrink-0 fill-white lg:size-8" />
-                        <p className="text-base font-semibold lg:text-lg/6">
-                            14900, Avenida del Parque No. 18
-                        </p>
-                    </div>
-                    <div className="text-gray-light flex items-center gap-2.5 py-4 lg:justify-center lg:px-4 lg:py-10">
-                        <Mail className="size-6 shrink-0 lg:size-8" />
-                        <Link
-                            href="mailto:info@automata.com"
-                            className="text-base font-semibold break-all transition hover:opacity-70 lg:text-lg/6"
-                        >
-                            info@automata.com
-                        </Link>
-                    </div>
-                    <div className="text-gray-light flex items-center gap-2.5 py-4 lg:justify-center lg:px-4 lg:py-10">
-                        <Phone className="text-primary size-6 shrink-0 fill-white lg:size-8" />
-                        <Link
-                            href="tel:+34613296952"
-                            className="text-base font-semibold transition hover:opacity-70 lg:text-lg/6"
-                        >
-                            +34 613 29 69 52
-                        </Link>
-                    </div>
-                </div>
-                <div className="text-gray-light flex flex-col items-center justify-between gap-5 py-5 md:flex-row md:py-[30px]">
-                    <p className="order-2 text-center text-sm/[18px] font-semibold md:order-1 md:text-left">
-                        &copy; {new Date().getFullYear()} Automata Enterprises. Todos los derechos reservados.
-                    </p>
-                    <div className="order-1 flex items-center gap-4 md:order-2">
-                        <Link
-                            className="text-sm/[18px] font-semibold underline underline-offset-2 transition hover:no-underline"
-                            href="/privacy-policy"
-                        >
-                            Política de privacidad
-                        </Link>
-                        <span className="bg-secondary h-4 w-0.5 shrink-0 rounded-full"></span>
-                        <Link
-                            className="text-sm/[18px] font-semibold underline underline-offset-2 transition hover:no-underline"
-                            href="/terms-conditions"
-                        >
-                            Términos y condiciones
-                        </Link>
-                    </div>
+
+                <div className="border-t border-white/10 py-6 text-center text-xs uppercase tracking-[0.3em] text-gray-light">
+                    &copy; {new Date().getFullYear()} Ecofet Centro Médico Estético. Todos los derechos reservados.
                 </div>
             </div>
         </footer>
     )
 }
+
+
+

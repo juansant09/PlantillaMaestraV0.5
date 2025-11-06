@@ -4,14 +4,14 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-    title: 'Términos y condiciones | Clínica Vitalis',
+    title: 'Términos y condiciones | Ecofet Centro Médico Estético',
     description:
-        'Consulta los términos y condiciones de uso del sitio web de Clínica Vitalis.',
+        'Consulta los términos y condiciones de uso del sitio web de Ecofet Centro Médico Estético.',
     openGraph: {
         ...helper.openGraphData,
-        title: 'Términos y condiciones | Clínica Vitalis',
+        title: 'Términos y condiciones | Ecofet Centro Médico Estético',
         description:
-            'Consulta los términos y condiciones de uso del sitio web de Clínica Vitalis.',
+            'Consulta los términos y condiciones de uso del sitio web de Ecofet Centro Médico Estético.',
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
     },
@@ -31,7 +31,7 @@ export default function TermsConditions() {
 
             <div className="container prose mx-auto w-full py-12 lg:prose-lg lg:max-w-[1142px] lg:py-20">
                 <p>
-                    Bienvenido a Clínica Vitalis. Los presentes Términos y Condiciones regulan el acceso y uso del sitio web <strong>{process.env.NEXT_PUBLIC_APP_URL}</strong>. Al navegar o utilizar nuestros servicios digitales, aceptas cumplir estas disposiciones. Te sugerimos leerlas detenidamente.
+                    Bienvenido a Ecofet Centro Médico Estético. Los presentes Términos y Condiciones regulan el acceso y uso del sitio web <strong>{process.env.NEXT_PUBLIC_APP_URL}</strong>. Al navegar o utilizar nuestros servicios digitales, aceptas cumplir estas disposiciones. Te sugerimos leerlas detenidamente.
                 </p>
                 <ol type="1">
                     <li>
@@ -47,7 +47,7 @@ export default function TermsConditions() {
                             <li>No realizar acciones que vulneren la legislación vigente o derechos de terceros.</li>
                             <li>No introducir virus, malware ni contenido que afecte el funcionamiento del sitio.</li>
                             <li>No intentar acceder a secciones restringidas o manipular información sin autorización.</li>
-                            <li>No utilizar la plataforma con fines comerciales no autorizados por Clínica Vitalis.</li>
+                            <li>No utilizar la plataforma con fines comerciales no autorizados por Ecofet Centro Médico Estético.</li>
                         </ul>
                     </li>
                     <li>
@@ -67,7 +67,7 @@ export default function TermsConditions() {
                     <li>
                         <h2>Propiedad intelectual</h2>
                         <p>
-                            Los contenidos, diseños, marcas, logotipos e imágenes del sitio son propiedad de Clínica Vitalis o cuentan con las licencias correspondientes. Queda prohibida su reproducción, distribución o modificación sin autorización previa y por escrito.
+                            Los contenidos, diseños, marcas, logotipos e imágenes del sitio son propiedad de Ecofet Centro Médico Estético o cuentan con las licencias correspondientes. Queda prohibida su reproducción, distribución o modificación sin autorización previa y por escrito.
                         </p>
                     </li>
                     <li>
@@ -79,7 +79,7 @@ export default function TermsConditions() {
                     <li>
                         <h2>Enlaces externos</h2>
                         <p>
-                            El sitio puede incluir enlaces hacia páginas de terceros. Clínica Vitalis no se responsabiliza por el contenido ni por las prácticas de privacidad de dichos sitios. Accedes a ellos bajo tu propia responsabilidad.
+                            El sitio puede incluir enlaces hacia páginas de terceros. Ecofet Centro Médico Estético no se responsabiliza por el contenido ni por las prácticas de privacidad de dichos sitios. Accedes a ellos bajo tu propia responsabilidad.
                         </p>
                     </li>
                     <li>
@@ -91,7 +91,7 @@ export default function TermsConditions() {
                     <li>
                         <h2>Terminación del acceso</h2>
                         <p>
-                            Clínica Vitalis se reserva el derecho de suspender o limitar el acceso al sitio a usuarios que incumplan estos Términos o realicen acciones que comprometan la seguridad de la plataforma.
+                            Ecofet Centro Médico Estético se reserva el derecho de suspender o limitar el acceso al sitio a usuarios que incumplan estos Términos o realicen acciones que comprometan la seguridad de la plataforma.
                         </p>
                     </li>
                     <li>
@@ -125,9 +125,9 @@ export default function TermsConditions() {
                     </li>
                 </ol>
                 <div className="pt-5">
-                    <p>Gracias por confiar en Clínica Vitalis.</p>
+                    <p>Gracias por confiar en Ecofet Centro Médico Estético.</p>
                     <p className="mb-0!">Atentamente,</p>
-                    <h4>Equipo de Clínica Vitalis</h4>
+                    <h4>Equipo de Ecofet Centro Médico Estético</h4>
                 </div>
             </div>
 
@@ -139,7 +139,7 @@ export default function TermsConditions() {
                         "@type": "WebSite",
                         "name": "Términos y condiciones",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Términos de uso del sitio web de Clínica Vitalis.",
+                        "description": "Términos de uso del sitio web de Ecofet Centro Médico Estético.",
                         "inLanguage": "es",
                         "image": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png",
                         "breadcrumb": {

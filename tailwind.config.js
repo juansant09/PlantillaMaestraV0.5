@@ -8,8 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#0EA5E9", // azul Vitalis
-        accent: "#22C55E",
+        primary: "#1C1A1D", // charcoal Ecofet
+        secondary: "#C8A46A", // oro suave
+        accent: "#6FD0C4", // agua marina
+        muted: "#F5EFE4",
+        charcoal: "#2A2729",
       },
     },
   },

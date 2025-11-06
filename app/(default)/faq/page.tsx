@@ -10,14 +10,14 @@ import helper from '@/lib/helper'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Preguntas frecuentes | Clínica Vitalis',
+    title: 'Preguntas frecuentes | Ecofet Centro Médico Estético',
     description:
-        'Resuelve tus dudas sobre turnos, coberturas, servicios y emergencias en Clínica Vitalis.',
+        'Resuelve tus dudas sobre turnos, coberturas, servicios y emergencias en Ecofet Centro Médico Estético.',
     openGraph: {
         ...helper.openGraphData,
-        title: 'Preguntas frecuentes | Clínica Vitalis',
+        title: 'Preguntas frecuentes | Ecofet Centro Médico Estético',
         description:
-            'Resuelve tus dudas sobre turnos, coberturas, servicios y emergencias en Clínica Vitalis.',
+            'Resuelve tus dudas sobre turnos, coberturas, servicios y emergencias en Ecofet Centro Médico Estético.',
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
     },
@@ -53,7 +53,7 @@ export default function Faq() {
                 <Accordion collapsible type="single" className="space-y-4">
                     <AccordionItem value="item-1">
                         <AccordionTrigger large={true}>
-                            ¿Qué servicios ofrece Clínica Vitalis
+                            ¿Qué servicios ofrece Ecofet Centro Médico Estético
                         </AccordionTrigger>
                         <AccordionContent className="py-3.5">
                             Contamos con medicina general, pediatría, cardiología, odontología, estudios diagnósticos, rehabilitación y programas preventivos integrales.
@@ -126,7 +126,7 @@ export default function Faq() {
                         "@type": "WebSite",
                         "name": "Preguntas frecuentes",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Resuelve tus dudas sobre Clínica Vitalis.",
+                        "description": "Resuelve tus dudas sobre Ecofet Centro Médico Estético.",
                         "inLanguage": "es",
                         "image": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png",
                         "breadcrumb": {

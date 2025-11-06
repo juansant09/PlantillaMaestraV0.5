@@ -14,10 +14,9 @@ import {
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import helper from '@/lib/helper'
-import { IServiceData } from '@/types/service'
+import { serviceListings } from '@/types/service'
 import {
     ArrowUpRight,
-    Baby,
     BriefcaseMedical,
     CalendarClock,
     ClipboardPlus,
@@ -25,8 +24,6 @@ import {
     HandHeart,
     Headset,
     HeartPulse,
-    ShieldPlus,
-    SquareActivity,
     Wallet,
 } from 'lucide-react'
 import { Metadata } from 'next'
@@ -51,35 +48,14 @@ export const metadata: Metadata = {
     },
 }
 
-const serviceListings: IServiceData[] = [
-    {
-        id: 1,
-        icon: ShieldPlus,
-        title: 'Medicina general',
-        description:
-            'Controles preventivos, planes personalizados y seguimiento integral para cada etapa de tu vida.',
-    },
-    {
-        id: 2,
-        icon: Baby,
-        title: 'Pediatría',
-        description:
-            'acompañamos a tus hijos con chequeos, vacunación y cuidados especializados desde el nacimiento.',
-    },
-    {
-        id: 3,
-        icon: SquareActivity,
-        title: 'Cardiología',
-        description:
-            'Diagnóstico oportuno y tratamientos avanzados para mantener tu corazón sano y fuerte.',
-    },
-]
 
 export default function Home() {
     return (
         <>
-            <div className="overflow-hidden bg-[url('/images/hero-bg.png')] bg-cover bg-center bg-no-repeat pt-[100px]">
-                <div className="container flex flex-col justify-between gap-5 lg:flex-row lg:gap-10">
+            <div className="relative overflow-hidden bg-gradient-to-br from-[#f1f2f6] via-[#e4e6ed] to-[#d2d5dd] pt-[100px]">
+                <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.65),transparent_60%)]" />
+                <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(195,200,210,0.45),transparent_55%)]" />
+                <div className="container relative flex flex-col justify-between gap-5 lg:flex-row lg:gap-10">
                     <div className="max-w-3xl pt-14 lg:pb-40 lg:pt-28 xl:pb-60 xl:pt-40">
                         <div className="mb-7 lg:mb-10">
                             <span className="mb-3 inline-flex items-center gap-1.5 rounded-lg bg-secondary/10 p-2 text-xs font-bold uppercase text-secondary lg:text-sm">
@@ -118,51 +94,68 @@ export default function Home() {
                             </Link>
                         </div>
                     </div>
-                    <div className="hero-doctors-animate relative mx-auto mt-auto lg:-mr-20 2xl:-mr-36">
-                        <Image
-                            src="/images/clinica-vitalis-hero-equipo.webp"
-                            alt="Equipo médico de Clínica Vitalis atendiendo pacientes"
-                            width={776}
-                            height={633}
-                            priority
-                            sizes="(min-width: 1280px) 780px, (min-width: 1024px) 60vw, 90vw"
-                            className="mx-auto h-auto w-full max-w-3xl object-contain"
-                        />
-                        <div className="absolute bottom-24 left-0 hidden items-center gap-2.5 rounded-full border border-gray-light bg-primary/10 p-2.5 pr-5 backdrop-blur-xl lg:flex xl:-left-14 xl:bottom-40 xl:p-4 xl:pr-8">
-                            <div className="flex">
-                                <div className="size-10 shrink-0 overflow-hidden rounded-full border-2 border-gray-light xl:size-14">
-                                    <Image
-                                        src="/images/clinica-vitalis-paciente-satisfecho-1.webp"
-                                        width={52}
-                                        height={52}
-                                        alt="Paciente recuperado de Clínica Vitalis"
-                                        className="h-full w-full object-cover"
-                                    />
+                    <div className="hero-doctors-animate relative mx-auto mt-auto w-full max-w-xl rounded-[44px] bg-white/70 p-10 shadow-[0_30px_90px_rgba(76,82,96,0.25)] backdrop-blur lg:-mr-20 2xl:-mr-36">
+                        <div className="pointer-events-none absolute inset-0 rounded-[44px] border border-white/45 bg-[radial-gradient(circle_at_top_left,rgba(233,236,242,0.85),transparent_55%)]" />
+                        <div className="relative space-y-8">
+                            <div>
+                                <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-gray-500">
+                                    <CalendarClock className="size-4 text-secondary" />
+                                    Agenda flexible
+                                </span>
+                                <h2 className="mt-4 text-3xl font-semibold text-primary">
+                                    Coordinamos tu plan integral de bienestar con seguimiento continuo.
+                                </h2>
+                                <p className="mt-3 text-sm text-gray-600 lg:text-base">
+                                    Cada cita combina evaluación médica, diagnóstico estético y acompañamiento humano para que avances con seguridad y calma.
+                                </p>
+                            </div>
+                            <div className="flex flex-wrap items-center gap-4">
+                                <div className="flex items-center -space-x-3">
+                                    <div className="size-12 overflow-hidden rounded-full border-2 border-white shadow-lg">
+                                        <Image
+                                            src="/imagenes-ecofet/5767150526385556754_120.jpg"
+                                            width={48}
+                                            height={48}
+                                            alt="Paciente sonriente en Ecofet"
+                                            className="h-full w-full object-cover"
+                                        />
+                                    </div>
+                                    <div className="size-12 overflow-hidden rounded-full border-2 border-white shadow-lg">
+                                        <Image
+                                            src="/imagenes-ecofet/5767150526385556756_121.jpg"
+                                            width={48}
+                                            height={48}
+                                            alt="Paciente relajada tras su tratamiento"
+                                            className="h-full w-full object-cover"
+                                        />
+                                    </div>
+                                    <div className="size-12 overflow-hidden rounded-full border-2 border-white shadow-lg">
+                                        <Image
+                                            src="/imagenes-ecofet/5767150526385556759_121.jpg"
+                                            width={48}
+                                            height={48}
+                                            alt="Cliente satisfecho en Ecofet"
+                                            className="h-full w-full object-cover"
+                                        />
+                                    </div>
                                 </div>
-                                <div className="relative -ml-3 size-10 shrink-0 overflow-hidden rounded-full border-2 border-gray-light xl:size-14">
-                                    <Image
-                                        src="/images/clinica-vitalis-paciente-satisfecho-2.webp"
-                                        width={52}
-                                        height={52}
-                                        alt="Paciente sonriendo después de su tratamiento"
-                                        className="h-full w-full object-cover"
-                                    />
-                                </div>
-                                <div className="relative -ml-3 size-10 shrink-0 overflow-hidden rounded-full border-2 border-gray-light xl:size-14">
-                                    <Image
-                                        src="/images/clinica-vitalis-paciente-satisfecho-3.webp"
-                                        width={52}
-                                        height={52}
-                                        alt="Paciente satisfecho con los resultados médicos"
-                                        className="h-full w-full object-cover"
-                                    />
+                                <div className="rounded-full border border-secondary/20 bg-white/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-secondary shadow-[0_12px_28px_rgba(82,86,97,0.18)]">
+                                    120+ Pacientes recuperados
                                 </div>
                             </div>
-                            <div className="flex flex-col gap-1 text-white">
-                                <span className="text-xl font-bold xl:text-2xl">
-                                    120+
-                                </span>
-                                <p className="text-sm">Pacientes recuperados</p>
+                            <div className="flex flex-col gap-3 rounded-[28px] border border-secondary/15 bg-gradient-to-br from-white/90 via-white to-[#f6f7fb]/85 p-5 text-sm text-gray-600 shadow-[0_20px_48px_rgba(84,88,102,0.18)]">
+                                <div className="flex items-center gap-3">
+                                    <FileBadge className="size-5 text-secondary" />
+                                    Protocolos médicos avalados por sociedades internacionales.
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <BriefcaseMedical className="size-5 text-secondary" />
+                                    Tecnologías de precisión, bioestimuladores y soluciones no invasivas.
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <HandHeart className="size-5 text-secondary" />
+                                    Seguimiento cercano y recomendaciones personalizadas en cada visita.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -178,14 +171,17 @@ export default function Home() {
             </div>
 
             <div className="container flex flex-col gap-10 py-16 lg:flex-row lg:py-20 xl:gap-[100px]">
-                <div className="relative lg:w-[450px] lg:shrink-0 xl:w-full xl:max-w-2xl">
-                    <Image
-                        src="/images/clinica-vitalis-equipo-clinico.webp"
-                        alt="Equipo de Clínica Vitalis dialogando con una paciente"
-                        width={432}
-                        height={501}
-                        className="h-auto w-full rounded-3xl object-cover pr-28 sm:pr-80 lg:pr-20 xl:pr-60"
-                    />
+                    <div className="relative grid gap-6 lg:w-[450px] lg:shrink-0 xl:w-full xl:max-w-2xl">
+                        <div className="relative h-[432px] w-full overflow-hidden rounded-3xl bg-gradient-to-br from-[#f1f2f6] via-[#e4e6ed] to-[#d2d5dd] shadow-[0_25px_60px_rgba(28,26,29,0.15)]">
+                            <Image
+                                src="/images/clinica-vitalis-equipo-clinico.webp"
+                                alt="Equipo médico de Clínica Vitalis atendiendo a una paciente"
+                                fill
+                                sizes="(min-width: 1280px) 32vw, (min-width: 1024px) 40vw, 100vw"
+                                className="object-cover"
+                                priority
+                            />
+                        </div>
                     <div className="absolute right-0 top-5 z-10 flex size-24 flex-col items-center justify-center rounded-full border-2 border-white bg-secondary text-center text-sm text-white shadow-[1px_3px_5px_0px_rgba(19,24,47,0.2)] sm:size-36 sm:gap-0.5 sm:border-[6px] sm:text-base lg:bottom-[28%] xl:right-44">
                         <span className="font-roboto text-3xl/8 font-semibold sm:text-5xl">
                             20+
@@ -193,30 +189,25 @@ export default function Home() {
                         años de experiencia
                     </div>
 
-                    <Image
-                        src="/images/clinica-vitalis-icon-estetoscopio.webp"
-                        width={224}
-                        height={168}
-                        alt="Ilustración de estetoscopio"
-                        className="absolute right-0 top-40 ml-5 hidden w-56 object-contain xl:block"
-                    />
-                    <div className="-mt-20 pl-12 sm:pl-52 lg:pl-14 xl:pl-52">
-                        <Image
-                            src="/images/clinica-vitalis-equipo-profesional.webp"
-                            width={464}
-                            height={265}
-                            alt="Equipo médico de Clínica Vitalis trabajando en conjunto"
-                            className="h-auto w-full rounded-2xl object-cover"
-                        />
-                    </div>
-                    <div className="absolute bottom-5 left-10 hidden w-24 xl:block">
-                        <Image
-                            src="/images/clinica-vitalis-detalle-decorativo.webp"
-                            width={96}
-                            height={95}
-                            alt="Detalle decorativo orgánico"
-                            className="h-auto w-full object-contain"
-                        />
+                    <div className="relative flex items-center justify-center">
+                        <div className="relative h-[265px] w-full overflow-hidden rounded-2xl bg-gradient-to-br from-[#f7f7fa] via-[#eceef3] to-[#dfe3eb] shadow-[0_20px_50px_rgba(28,26,29,0.15)]">
+                            <Image
+                                src="/images/clinica-vitalis-instalaciones-diagnostico.webp"
+                                alt="Especialista de Clínica Vitalis realizando diagnóstico con tecnología moderna"
+                                fill
+                                sizes="(min-width: 1280px) 28vw, (min-width: 1024px) 36vw, 100vw"
+                                className="object-cover"
+                            />
+                        </div>
+                        <div className="absolute right-8 top-8 hidden h-[120px] w-[180px] overflow-hidden rounded-2xl border-4 border-white bg-gradient-to-br from-[#f2f3f7] via-[#e7e9ef] to-[#dfe2ea] shadow-lg xl:block">
+                            <Image
+                                src="/images/clinica-vitalis-atencion-personalizada.webp"
+                                alt="Atención personalizada en recepción de Clínica Vitalis"
+                                fill
+                                sizes="180px"
+                                className="object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -459,6 +450,8 @@ export default function Home() {
         </>
     )
 }
+
+
 
 
 

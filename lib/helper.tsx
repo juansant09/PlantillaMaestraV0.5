@@ -1,19 +1,23 @@
 const helper = {
     openGraphData: {
-        title: 'Cl\u00ednica Vitalis',
+        title: 'Ecofet Centro Médico Estético',
         description:
-            'Cuidado experto y tratamientos avanzados: tu salud es nuestra m\u00e1xima prioridad.',
-        siteName: 'Cl\u00ednica Vitalis',
+            'Medicina estética boutique con tratamientos personalizados, tecnología de precisión y acompañamiento médico cercano.',
+        siteName: 'Ecofet Centro Médico Estético',
         type: 'website',
-        images: [{ url: `${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png` }],
+        images: [
+            {
+                url: `${process.env.NEXT_PUBLIC_APP_URL}/imagenes-ecofet/ecofet.svg`,
+            },
+        ],
     },
     getOrganizationJsonString: () => {
         return `{
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Cl\u00ednica Vitalis",
+            "name": "Ecofet Centro Médico Estético",
             "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-            "logo": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png"
+            "logo": "${process.env.NEXT_PUBLIC_APP_URL}/imagenes-ecofet/ecofet.svg"
         }`
     },
 }

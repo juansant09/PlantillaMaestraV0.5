@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @import 'tailwindcss';
 
@@ -15,20 +15,20 @@
     --breakpoint-2xl: 1472px;
 
     --font-*: initial;
-    --font-plus-jakarta: 'DM Sans', sans-serif;
-    --font-roboto: 'DM Sans', sans-serif;
+    --font-plus-jakarta: 'Poppins', 'Inter', sans-serif;
+    --font-roboto: 'Poppins', 'Inter', sans-serif;
 
     --color-*: initial;
     --color-transparent: transparent;
     --color-white: #ffffff;
     --color-black: #1d1d1d;
-    --color-primary: #0e1f3a;
-    --color-secondary: #58a5f9;
+    --color-primary: #1c1a1d;
+    --color-secondary: #c8a46a;
     --color-accent: #ffffff;
-    --color-gray: #2d3a4a;
-    --color-gray-light: #d5e3f9;
-    --color-gray-100: #f2f7ff;
-    --color-gray-200: #e6f0fc;
+    --color-gray: #332f31;
+    --color-gray-light: #e7e0d4;
+    --color-gray-100: #f7f3ee;
+    --color-gray-200: #ece4da;
 
     --animate-marquee: marquee 30s linear infinite;
     --animate-accordion-down: accordion-down 0.2s ease-out;
@@ -52,8 +52,8 @@
     }
 
     body {
-        font-family: 'DM Sans', sans-serif;
-        background-color: #ffffff;
+        font-family: 'Poppins', 'Inter', sans-serif;
+        background-color: #f9f5ef;
         color: var(--color-primary);
         line-height: 1.65;
         -webkit-font-smoothing: antialiased;
@@ -257,13 +257,13 @@
     }
 
     .header-surface {
-        box-shadow: 0 12px 30px rgba(16, 37, 68, 0.18);
+        box-shadow: 0 12px 30px rgba(34, 29, 34, 0.2);
         backdrop-filter: blur(10px);
     }
 
     @screen lg {
         .header-surface {
-            box-shadow: 0 18px 36px rgba(16, 37, 68, 0.16);
+            box-shadow: 0 18px 36px rgba(34, 29, 34, 0.18);
         }
     }
 
@@ -274,13 +274,13 @@
 
     .service-card:hover {
         transform: translateY(-12px);
-        box-shadow: 0 20px 40px rgba(94, 168, 255, 0.22);
+        box-shadow: 0 20px 40px rgba(200, 164, 106, 0.24);
         background-color: #ffffff;
-        border-color: rgba(111, 173, 247, 0.6);
+        border-color: rgba(111, 205, 198, 0.46);
     }
 
     .service-card:hover .shadow-soft {
-        box-shadow: 0 12px 30px rgba(76, 132, 237, 0.35);
+        box-shadow: 0 12px 30px rgba(200, 164, 106, 0.35);
     }
 
     a svg,
@@ -296,13 +296,13 @@
     .group:hover svg,
     .tag:hover svg {
         transform: scale(1.08) translateY(-1px);
-        filter: drop-shadow(0 6px 12px rgba(76, 132, 237, 0.25));
+        filter: drop-shadow(0 6px 12px rgba(200, 164, 106, 0.28));
     }
 
     main > .container[class*='py-'],
     main > .container[class*='pt-'][class*='pb-'] {
         position: relative;
-        background-color: #f9fbfd;
+        background-color: #f5efe7;
         border-radius: 32px;
         padding-inline: clamp(1.5rem, 3vw, 3rem);
         box-shadow: 0 12px 48px rgba(16, 37, 68, 0.04);
@@ -312,7 +312,7 @@
 
     main > .container[class*='py-']:nth-of-type(even),
     main > .container[class*='pt-'][class*='pb-']:nth-of-type(even) {
-        background-color: #eef6fa;
+        background-color: #f1ebe2;
     }
 
     main > .container[class*='py-']::after,
@@ -321,7 +321,7 @@
         position: absolute;
         inset: 0;
         border-radius: inherit;
-        background: linear-gradient(135deg, rgba(111, 173, 247, 0.12), rgba(226, 239, 252, 0.08));
+        background: linear-gradient(135deg, rgba(84, 112, 114, 0.15), rgba(238, 226, 209, 0.18));
         opacity: 0;
         transition: opacity 0.4s ease;
         z-index: -1;
@@ -334,51 +334,51 @@
 
     .hero-cta {
         transition: box-shadow 0.3s ease, filter 0.3s ease, color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-        box-shadow: 0 6px 18px rgba(0, 255, 200, 0.16);
+        box-shadow: 0 6px 18px rgba(111, 205, 198, 0.18);
     }
 
     .hero-cta:hover {
-        box-shadow: 0 0 18px rgba(0, 255, 200, 0.25);
+        box-shadow: 0 0 18px rgba(111, 205, 198, 0.28);
         filter: brightness(1.06);
     }
 
     .hero-cta-outline {
-        border-color: rgba(38, 198, 218, 0.45) !important;
-        background-color: rgba(255, 255, 255, 0.08);
+        border-color: rgba(104, 182, 181, 0.35) !important;
+        background-color: rgba(255, 255, 255, 0.12);
         color: var(--color-primary) !important;
     }
 
     .hero-cta-outline:hover {
         background-color: rgba(255, 255, 255, 0.18);
-        border-color: rgba(38, 198, 218, 0.75) !important;
+        border-color: rgba(104, 182, 181, 0.55) !important;
         color: var(--color-primary) !important;
-        box-shadow: 0 0 18px rgba(0, 255, 200, 0.25);
+        box-shadow: 0 0 18px rgba(111, 205, 198, 0.28);
     }
 
     .btn {
         transition: box-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
-        box-shadow: 0 6px 18px rgba(0, 255, 200, 0.16);
+        box-shadow: 0 6px 18px rgba(111, 205, 198, 0.18);
     }
 
     .btn:hover {
         transform: translateY(-1px);
-        box-shadow: 0 0 18px rgba(0, 255, 200, 0.25);
+        box-shadow: 0 0 18px rgba(111, 205, 198, 0.28);
         filter: brightness(1.05);
     }
 
     .container:has(.grid.gap-8.sm\:grid-cols-2.lg\:grid-cols-3.lg\:gap-14) {
         background-image:
-            radial-gradient(circle at 20% 20%, rgba(111, 173, 247, 0.12) 0, rgba(111, 173, 247, 0) 55%),
-            radial-gradient(circle at 80% 30%, rgba(64, 129, 219, 0.08) 0, rgba(64, 129, 219, 0) 60%),
-            url('data:image/svg+xml,%3Csvg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M110 30c10 14 10 36 0 50-12 16-34 16-46 0-10-14-10-36 0-50 12-16 34-16 46 0Z" stroke="rgba(80,150,220,0.14)" stroke-width="2" stroke-dasharray="6 10" fill="none"/%3E%3Cpath d="M60 110c10 14 10 36 0 50-12 16-34 16-46 0-10-14-10-36 0-50 12-16 34-16 46 0Z" stroke="rgba(120,185,235,0.12)" stroke-width="2" stroke-dasharray="4 12" fill="none"/%3E%3C/svg%3E');
+            radial-gradient(circle at 20% 20%, rgba(84, 112, 114, 0.15) 0, rgba(111, 173, 247, 0) 55%),
+            radial-gradient(circle at 80% 30%, rgba(200, 164, 106, 0.18) 0, rgba(64, 129, 219, 0) 60%),
+            url('data:image/svg+xml,%3Csvg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M110 30c10 14 10 36 0 50-12 16-34 16-46 0-10-14-10-36 0-50 12-16 34-16 46 0Z" stroke="rgba(200,160,110,0.18)" stroke-width="2" stroke-dasharray="6 10" fill="none"/%3E%3Cpath d="M60 110c10 14 10 36 0 50-12 16-34 16-46 0-10-14-10-36 0-50 12-16 34-16 46 0Z" stroke="rgba(111,207,198,0.18)" stroke-width="2" stroke-dasharray="4 12" fill="none"/%3E%3C/svg%3E');
         background-size: cover, cover, 220px 220px;
         background-repeat: no-repeat, no-repeat, repeat;
     }
 
     footer.bg-primary {
         position: relative;
-        background-color: #0a192f !important;
-        color: #d5e4ff;
+        background-color: #121011 !important;
+        color: #f1e7d5;
         overflow: hidden;
         animation: footer-fade 1.4s ease 0.25s both;
     }
@@ -387,7 +387,7 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(39, 158, 188, 0.12) 0%, rgba(10, 25, 47, 0) 55%);
+        background: linear-gradient(180deg, rgba(111, 208, 196, 0.12) 0%, rgba(28, 26, 29, 0) 55%);
         pointer-events: none;
         z-index: 0;
     }
@@ -400,24 +400,24 @@
     }
 
     footer.bg-primary .text-gray-light {
-        color: #d6e5ff;
+        color: #f2e9da;
     }
 
     .text-gray-strong {
-        color: #2b394d !important;
+        color: #3a3537 !important;
     }
 
     .text-gray-soft {
-        color: #4c5d74 !important;
+        color: #5b5557 !important;
     }
 
     .text-gray-light {
-        color: rgba(230, 240, 255, 0.88) !important;
+        color: rgba(243, 234, 219, 0.88) !important;
     }
 
     footer.bg-primary h2,
     footer.bg-primary h3 {
-        color: #f5fbff;
+        color: #fff8ef;
         font-weight: 700;
         letter-spacing: 0.03em;
     }
@@ -426,32 +426,32 @@
     footer.bg-primary .font-bold {
         font-weight: 700;
         letter-spacing: 0.025em;
-        color: #f1f6ff;
+        color: #f7efe0;
     }
 
     footer.bg-primary .border-white\/10,
     footer.bg-primary .divide-white\/10 {
-        border-color: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(255, 255, 255, 0.12) !important;
     }
 
     footer.bg-primary .grid.size-8 {
-        background: rgba(255, 255, 255, 0.04);
-        border-color: rgba(180, 200, 240, 0.2);
+        background: rgba(255, 245, 230, 0.08);
+        border-color: rgba(230, 204, 155, 0.25);
         transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
 
     footer.bg-primary .grid.size-8:hover {
         transform: translateY(-3px);
         border-color: rgba(120, 185, 235, 0.65);
-        box-shadow: 0 16px 30px rgba(35, 105, 182, 0.35);
+        box-shadow: 0 16px 30px rgba(65, 60, 55, 0.35);
     }
 
     footer.bg-primary .border-white\/10 + .border-white\/10 {
-        border-left-color: rgba(255, 255, 255, 0.08) !important;
+        border-left-color: rgba(255, 255, 255, 0.12) !important;
     }
 
     footer.bg-primary .bg-secondary {
-        background-color: rgba(108, 217, 236, 0.9);
+        background-color: rgba(111, 207, 198, 0.9);
     }
 
     footer.bg-primary a:not(.btn) {
@@ -459,7 +459,7 @@
     }
 
     footer.bg-primary a:not(.btn):hover {
-        color: #8dcbff;
+        color: #dbc28b;
         opacity: 1;
     }
 
@@ -481,14 +481,14 @@
 
 /* team-swiper-pagination */
 .team-swiper-pagination .swiper-pagination-bullet {
-    @apply border-primary mx-1 size-5 rounded-full border-[5px] bg-white opacity-40;
+    @apply border-secondary mx-1 size-5 rounded-full border-[5px] bg-white opacity-40;
 }
 .team-swiper-pagination .swiper-pagination-bullet-active {
     @apply ring-secondary size-5 opacity-100 ring-1 transition-all duration-500;
 }
 /* testimonials-swiper-pagination */
 .testimonials-swiper-pagination .swiper-pagination-bullet {
-    @apply border-primary mx-1 size-2.5 rounded-full border-[3px] bg-white opacity-40;
+    @apply border-secondary mx-1 size-2.5 rounded-full border-[3px] bg-white opacity-40;
 }
 .testimonials-swiper-pagination .swiper-pagination-bullet-active {
     @apply ring-secondary size-2.5 opacity-100 ring-1 transition-all duration-500;

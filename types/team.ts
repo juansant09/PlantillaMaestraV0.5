@@ -4,6 +4,7 @@ export interface ITeamData {
     alt: string
     name?: string
     speciality?: string
+    description?: string
 }
 
 export interface ITestimonialData {

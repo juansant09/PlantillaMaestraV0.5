@@ -3,7 +3,7 @@ const whatsappNumber =
 
 const whatsappMessage =
     process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
-    'Hola, me gustaria agendar una cita en Clinica Vitalis.'
+    'Hola, me gustaria agendar una cita en Ecofet Centro Médico Estético.'
 
 const encodedMessage = encodeURIComponent(whatsappMessage)
 

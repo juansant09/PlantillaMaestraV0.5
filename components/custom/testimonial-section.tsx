@@ -19,7 +19,7 @@ import CountsUp from '@/components/custom/counts-up'
 const testimonialdata: ITestimonialData[] = [
     {
         id: 1,
-        image: '/images/clinica-vitalis-paciente-satisfecho-1.webp',
+        image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=256&q=80',
         name: 'Sarah Johnson',
         speciality: 'Nutricionista',
         message:
@@ -27,7 +27,7 @@ const testimonialdata: ITestimonialData[] = [
     },
     {
         id: 2,
-        image: '/images/clinica-vitalis-paciente-satisfecho-2.webp',
+        image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=256&q=80',
         name: 'Dr. Miguel Lopez',
         speciality: 'Cardiólogo',
         message:
@@ -35,7 +35,7 @@ const testimonialdata: ITestimonialData[] = [
     },
     {
         id: 3,
-        image: '/images/clinica-vitalis-paciente-satisfecho-3.webp',
+        image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=256&q=80',
         name: 'Emily Carter',
         speciality: 'Pediatra',
         message:
@@ -43,31 +43,75 @@ const testimonialdata: ITestimonialData[] = [
     },
     {
         id: 4,
-        image: '/images/clinica-vitalis-paciente-satisfecho-2.webp',
+        image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=256&q=80',
         name: 'David Thompson',
         speciality: 'Cirujano ortopédico',
         message:
             '"Atención profesional y confiable en cada paso. Recomiendo ampliamente su experiencia médica."',
     },
 ]
+
+const floatingProfiles = [
+    {
+        id: 'profile-1',
+        src: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=200&q=80',
+        alt: 'Retrato de paciente sonriendo',
+        width: 112,
+        height: 112,
+        className:
+            'left-0 top-6 w-20 h-20 sm:-left-28 sm:top-2 sm:w-24 sm:h-24 opacity-80',
+    },
+    {
+        id: 'profile-2',
+        src: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=200&q=80',
+        alt: 'Paciente relajada durante su consulta',
+        width: 104,
+        height: 104,
+        className:
+            'right-0 top-12 w-16 h-16 sm:-right-28 sm:top-8 sm:w-20 sm:h-20 opacity-75',
+    },
+    {
+        id: 'profile-3',
+        src: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=200&q=80',
+        alt: 'Especialista del equipo Ecofet sonriendo',
+        width: 120,
+        height: 120,
+        className:
+            'left-2 bottom-2 w-20 h-20 sm:-left-24 sm:bottom-8 sm:w-24 sm:h-24 opacity-80',
+    },
+    {
+        id: 'profile-4',
+        src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+        alt: 'Paciente recuperado disfrutando del resultado',
+        width: 120,
+        height: 120,
+        className:
+            'right-6 bottom-0 w-20 h-20 sm:-right-24 sm:bottom-10 sm:w-24 sm:h-24 opacity-80',
+    },
+    {
+        id: 'profile-5',
+        src: 'https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=200&q=80',
+        alt: 'Paciente feliz tras su tratamiento estético',
+        width: 96,
+        height: 96,
+        className:
+            'left-1/2 top-0 hidden -translate-x-1/2 md:block w-16 h-16 sm:-top-10 sm:w-20 sm:h-20 opacity-70',
+    },
+]
 export default function TestimonialSection() {
     return (
         <div className="overflow-hidden bg-gray-100 bg-[url(/images/map.png)] bg-contain bg-center bg-no-repeat">
             <div className="container relative mx-auto pt-12 text-center sm:max-w-4xl lg:pt-20">
-                <Image
-                    src="/images/testimonial-img.png"
-                    alt="perfiles de pacientes"
-                    className="jump absolute -left-[450px] w-72 opacity-60"
-                    width={288}
-                    height={334}
-                />
-                <Image
-                    src="/images/testimonial-img2.png"
-                    alt="perfiles de especialistas"
-                    className="jump absolute -right-[450px] w-72 opacity-60"
-                    width={288}
-                    height={328}
-                />
+                {floatingProfiles.map((profile) => (
+                    <Image
+                        key={profile.id}
+                        src={profile.src}
+                        alt={profile.alt}
+                        width={profile.width}
+                        height={profile.height}
+                        className={`jump absolute rounded-full border-4 border-white object-cover shadow-lg ${profile.className}`}
+                    />
+                ))}
                 <Swiper
                     className="swiper testimonials-swiper"
                     modules={[Autoplay, Navigation, Pagination]}
@@ -148,7 +192,7 @@ export default function TestimonialSection() {
                             />
                         </div>
                         <p className="text-center text-gray">
-                            Pacientes recuperados con éxito
+                            Pacientes tratados con éxito
                         </p>
                     </div>
                     <div className="space-y-1">
@@ -156,7 +200,7 @@ export default function TestimonialSection() {
                             <UserPlus2 className="size-10 shrink-0 text-secondary" />
                             <CountsUp
                                 start={0}
-                                end={240}
+                                end={8}
                                 duration={3}
                                 delay={0}
                                 suffix="+"

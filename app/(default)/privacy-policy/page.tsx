@@ -4,14 +4,14 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-    title: 'Política de privacidad | Clínica Vitalis',
+    title: 'Política de privacidad | Ecofet Centro Médico Estético',
     description:
-        'Descubre cómo Clínica Vitalis protege y utiliza tus datos personales de forma segura y responsable.',
+        'Descubre cómo Ecofet Centro Médico Estético protege y utiliza tus datos personales de forma segura y responsable.',
     openGraph: {
         ...helper.openGraphData,
-        title: 'Política de privacidad | Clínica Vitalis',
+        title: 'Política de privacidad | Ecofet Centro Médico Estético',
         description:
-            'Descubre cómo Clínica Vitalis protege y utiliza tus datos personales de forma segura y responsable.',
+            'Descubre cómo Ecofet Centro Médico Estético protege y utiliza tus datos personales de forma segura y responsable.',
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
     },
@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
 
             <div className="container prose mx-auto w-full py-12 lg:prose-lg lg:max-w-[1142px] lg:py-20">
                 <p>
-                    En Clínica Vitalis priorizamos la confidencialidad y seguridad de la información de nuestros pacientes. Esta Política de Privacidad explica qué datos recopilamos, con qué finalidad los tratamos y cuáles son tus derechos.
+                    En Ecofet Centro Médico Estético priorizamos la confidencialidad y seguridad de la información de nuestros pacientes. Esta Política de Privacidad explica qué datos recopilamos, con qué finalidad los tratamos y cuáles son tus derechos.
                 </p>
                 <ol type="1">
                     <li>
@@ -75,7 +75,7 @@ export default function PrivacyPolicy() {
                     <li>
                         <h2>Con quién compartimos la información</h2>
                         <p>
-                            Solo compartimos datos con proveedores que prestan servicios a Vitalis (por ejemplo, sistemas de turnos, laboratorios o plataformas de mailing), siempre bajo acuerdos de confidencialidad y protección de datos.
+                            Solo compartimos datos con proveedores que prestan servicios a Ecofet (por ejemplo, sistemas de turnos, laboratorios o plataformas de mailing), siempre bajo acuerdos de confidencialidad y protección de datos.
                         </p>
                     </li>
                     <li>
@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
                     <li>
                         <h2>Enlaces externos</h2>
                         <p>
-                            Nuestro sitio puede redirigirte a páginas de terceros. Clínica Vitalis no se responsabiliza por las prácticas de privacidad de esos sitios. Te recomendamos revisar sus políticas antes de facilitar datos personales.
+                            Nuestro sitio puede redirigirte a páginas de terceros. Ecofet Centro Médico Estético no se responsabiliza por las prácticas de privacidad de esos sitios. Te recomendamos revisar sus políticas antes de facilitar datos personales.
                         </p>
                     </li>
                     <li>
@@ -134,9 +134,9 @@ export default function PrivacyPolicy() {
                 </ol>
                 <div className="pt-5">
                     <p>
-                        Gracias por confiar en Clínica Vitalis. Cuidamos tu salud y tu privacidad con el mismo compromiso.
+                        Gracias por confiar en Ecofet Centro Médico Estético. Cuidamos tu salud y tu privacidad con el mismo compromiso.
                     </p>
-                    <p className="mb-0!">Equipo de Clínica Vitalis</p>
+                    <p className="mb-0!">Equipo de Ecofet Centro Médico Estético</p>
                 </div>
             </div>
 
@@ -148,7 +148,7 @@ export default function PrivacyPolicy() {
                         "@type": "WebSite",
                         "name": "Política de privacidad",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Política de privacidad de Clínica Vitalis.",
+                        "description": "Política de privacidad de Ecofet Centro Médico Estético.",
                         "inLanguage": "es",
                         "image": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png",
                         "breadcrumb": {

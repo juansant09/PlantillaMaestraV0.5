@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -47,7 +47,3 @@ export default function ServicesSwiper() {
         </Swiper>
     )
 }
-
-
-
-

@@ -6,14 +6,14 @@ import helper from '@/lib/helper'
 import Details from '@/app/(default)/services/service-details/_details'
 
 export const metadata: Metadata = {
-    title: 'Detalle de servicios | Clínica Vitalis',
+    title: 'Detalle de servicios | Ecofet Centro Médico Estético',
     description:
-        'Explora el detalle de cada servicio médico en Clínica Vitalis y descubre cómo podemos ayudarte.',
+        'Explora el detalle de cada servicio médico en Ecofet Centro Médico Estético y descubre cómo podemos ayudarte.',
     openGraph: {
         ...helper.openGraphData,
-        title: 'Detalle de servicios | Clínica Vitalis',
+        title: 'Detalle de servicios | Ecofet Centro Médico Estético',
         description:
-            'Explora el detalle de cada servicio médico en Clínica Vitalis y descubre cómo podemos ayudarte.',
+            'Explora el detalle de cada servicio médico en Ecofet Centro Médico Estético y descubre cómo podemos ayudarte.',
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
     },
@@ -70,7 +70,7 @@ export default function ServiceDetails() {
                         "@type": "WebSite",
                         "name": "Detalle de servicios",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Descubre los servicios médicos de Clínica Vitalis.",
+                        "description": "Descubre los servicios médicos de Ecofet Centro Médico Estético.",
                         "inLanguage": "es",
                         "image": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png",
                         "breadcrumb": {

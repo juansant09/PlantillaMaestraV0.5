@@ -16,14 +16,14 @@ const dmSans = DM_Sans({
 const appUrl = process.env.NEXT_PUBLIC_APP_URL
 
 export const metadata: Metadata = {
-    title: 'Cl\u00ednica Vitalis | Medicina moderna y cuidado humano',
+    title: 'Clínica Ecofet | Medicina moderna y cuidado humano',
     description:
-        'Cl\u00ednica Vitalis combina tecnolog\u00eda m\u00e9dica avanzada, especialistas certificados y cercan\u00eda humana para ofrecer cardiolog\u00eda, pediatr\u00eda, ortopedia y m\u00e1s servicios premium.',
+        'Clínica Ecofet combina tecnología médica avanzada, especialistas certificados y cercanía humana para ofrecer cardiología, pediatría, ortopedia y más servicios premium.',
     openGraph: {
         ...helper.openGraphData,
-        title: 'Cl\u00ednica Vitalis | Medicina moderna y cuidado humano',
+        title: 'Clínica Ecofet | Medicina moderna y cuidado humano',
         description:
-            'Salud integral con tecnolog\u00eda de vanguardia, seguimiento personalizado y un equipo experto comprometido con tu bienestar.',
+            'Salud integral con tecnología de vanguardia, seguimiento personalizado y un equipo experto comprometido con tu bienestar.',
         url: appUrl,
         type: 'website',
     },
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         site: '@clinicavitalis',
-        title: 'Cl\u00ednica Vitalis',
+        title: 'Clínica Ecofet',
         description:
-            'Medicina moderna con tecnolog\u00eda avanzada y cuidado humano. Agenda tu cita en Cl\u00ednica Vitalis.',
+            'Medicina moderna con tecnología avanzada y cuidado humano. Agenda tu cita en Clínica Ecofet.',
     },
     robots: {
         index: true,

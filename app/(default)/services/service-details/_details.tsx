@@ -26,348 +26,372 @@ type ServiceDetail = {
 
 const serviceDetails: ServiceDetail[] = [
     {
-        title: 'Medicina general',
-        image:
-            'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+        title: 'Hilos tensores',
+        image: '/imagenes-ecofet/hilos-tensores.jpg',
         intro:
-            'Nuestro equipo de medicina general acompaña tu salud día a día con diagnósticos integrales, seguimiento de enfermedades crónicas y planes preventivos personalizados.',
+            'Reafirmamos contornos faciales con hilos tensores de última generación. Logra un efecto lifting inmediato y natural, sin cirugía y con mínima recuperación.',
         benefits: [
-            'Chequeos periódicos y evaluación completa de indicadores de salud.',
-            'Coordinación con especialistas cuando el caso lo requiere.',
-            'Educación sanitaria para adoptar hábitos saludables sostenibles.',
+            'Define óvalo facial, pómulos y línea mandibular en una sola sesión.',
+            'Estimula la producción de colágeno para resultados que mejoran con el tiempo.',
+            'Procedimiento ambulatorio con anestesia tópica y retorno inmediato a tu rutina.',
         ],
         focus: [
-            'Trabajamos con historias clínicas digitales y análisis completos para ofrecer una visión global de tu bienestar. Cada consulta incluye tiempo para escuchar tus inquietudes y diseñar un plan claro.',
-            'También brindamos orientación sobre vacunación, control de peso, nutrición y manejo del estrés para ayudarte a mantener un estilo de vida equilibrado.',
+            'Utilizamos hilos PDO y PLLA certificados, seleccionando el diseño ideal según la anatomía de tu rostro. Antes del procedimiento realizamos un mapeo facial dinámico para conseguir simetría y elevación personalizada.',
+            'Acompañamos con un plan post tratamiento que incluye radiofrecuencia médica y dermonutrición para prolongar el efecto lifting y cuidar tu piel desde adentro.',
         ],
         faqs: [
             {
-                question: '¿Con qué frecuencia debo agendar un chequeo general?',
+                question: '¿Cuánto duran los resultados?',
                 answer:
-                    'Recomendamos al menos una consulta anual. Si tienes alguna condición crónica, coordinamos controles trimestrales o semestrales para monitorear tu progreso.',
+                    'Los efectos son visibles al instante y continúan mejorando durante 4 a 6 semanas. La duración promedio es de 12 a 18 meses, dependiendo del estilo de vida y cuidados posteriores.',
             },
             {
-                question: '¿Pueden recetar estudios o derivaciones?',
+                question: '¿Es compatible con otros procedimientos?',
                 answer:
-                    'Sí. Nuestros médicos generales evalúan cada caso y solicitan análisis, imágenes o derivaciones a especialistas cuando es necesario.',
+                    'Sí. Podemos combinar hilos con toxina botulínica, rellenos o bioestimuladores. Planificamos cada combinación de forma personalizada para maximizar resultados.',
             },
             {
-                question: '¿Atienden urgencias leves?',
+                question: '¿Requiere reposo?',
                 answer:
-                    'Contamos con cupos diarios para urgencias menores como infecciones, golpes o descompensaciones. Para emergencias severas, disponemos de un protocolo de derivación inmediata.',
+                    'Solo sugerimos evitar ejercicios intensos y masajes faciales las primeras 48 horas. Te entregamos un kit de cuidados y estamos disponibles para cualquier consulta.',
             },
         ],
     },
     {
-        title: 'Pediatría',
-        image:
-            'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+        title: 'Botox',
+        image: '/imagenes-ecofet/botox.jpg',
         intro:
-            'Acompañamos el crecimiento de tus hijos desde el nacimiento hasta la adolescencia con controles, vacunación y orientación sobre desarrollo.',
+            'Suavizamos líneas de expresión con neuromoduladores premium aplicados por médicas estéticas expertas. Conservamos tu gestualidad y logramos un aspecto fresco y descansado.',
         benefits: [
-            'Consultas cálidas que generan confianza en los niños.',
-            'Seguimiento nutricional, pautas de sueño y control del crecimiento.',
-            'Detección temprana de trastornos del desarrollo y apoyo familiar.',
+            'Sesión de pocos minutos, sin tiempos de recuperación.',
+            'Resultados progresivos a partir del tercer día y estabilidad a las dos semanas.',
+            'Protocolos de microdosis para tratar sonrisa gingival, bruxismo y sudoración.',
         ],
         focus: [
-            'Creamos un ambiente amigable para que cada visita sea una experiencia positiva. Explicamos cada procedimiento y respondemos las dudas de las familias con claridad.',
-            'Nos coordinamos con colegios y especialistas en caso de requerir apoyo adicional, garantizando una red de contención integral.',
+            'Realizamos un análisis dinámico de tu expresión para definir puntos estratégicos y dosis exactas. Usamos toxinas aprobadas por ANMAT y conservamos siempre un resultado natural.',
+            'Incluimos control a los 15 días para perfeccionar detalles y adaptar el plan a tu siguiente visita, garantizando resultados constantes y armoniosos.',
         ],
         faqs: [
             {
-                question: '¿Cuándo debería llevar a mi bebé a su primer control?',
+                question: '¿Cuánto dura el efecto?',
                 answer:
-                    'Recomendamos una evaluación dentro del primer mes de vida y controles periódicos según el calendario de crecimiento y vacunación.',
+                    'Entre 4 y 6 meses según tu metabolismo y hábitos. Te orientamos para que mantengas los resultados con refuerzos planificados.',
             },
             {
-                question: '¿Administran todas las vacunas oficiales?',
+                question: '¿Desde qué edad se recomienda?',
                 answer:
-                    'Sí. Aplicamos el calendario nacional e informamos sobre vacunas opcionales. También emitimos recordatorios para que no pierdas ninguna dosis.',
+                    'Podemos trabajarlo de forma preventiva desde los 25 años o correctiva en etapas más avanzadas. Evaluamos cada caso de manera integral.',
             },
             {
-                question: '¿Atienden urgencias pediátricas?',
+                question: '¿Qué cuidados debo seguir?',
                 answer:
-                    'Contamos con atención prioritaria para cuadros febriles, golpes o alergias. En casos graves coordinamos derivaciones inmediatas.',
+                    'Evita recostarte durante 4 horas, realizar actividad física intensa y masajear la zona tratada el primer día. El resto de tu rutina continúa igual.',
             },
         ],
     },
     {
-        title: 'Cardiología',
-        image:
-            'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+        title: 'Ácido hialurónico',
+        image: '/imagenes-ecofet/acido-hialuronico.jpg',
         intro:
-            'Realizamos diagnósticos precisos y planes de tratamiento personalizados para prevenir, detectar y tratar enfermedades cardiovasculares.',
+            'Restauramos volumen, hidratación y armonía facial con ácido hialurónico de alta pureza. Elegimos densidades específicas para cada área del rostro.',
         benefits: [
-            'Electrocardiogramas y ecocardiogramas con tecnología digital.',
-            'Programas de control para hipertensión y colesterol.',
-            'Rehabilitación cardíaca supervisada por especialistas.',
+            'Realza labios, pómulos y mentón con resultados inmediatos.',
+            'Suaviza surcos nasogenianos, líneas de marioneta y ojeras hundidas.',
+            'Incluye control post sesión y plan de mantención personalizado.',
         ],
         focus: [
-            'Nos enfocamos en identificar factores de riesgo y acompañarte con cambios de estilo de vida, medicación adecuada y controles periódicos.',
-            'Trabajamos en conjunto con nutricionistas y especialistas en actividad física para diseñar rutinas seguras que favorezcan tu recuperación.',
+            'Utilizamos cánulas o microagujas según la zona a tratar para minimizar hematomas y asegurar un acabado uniforme. Trabajamos con marcas líderes y viscoelasticidades adaptadas a cada objetivo.',
+            'Combinamos el tratamiento con tecnologías de estimulación de colágeno y skincare médico para prolongar el efecto glow y mantener la piel revitalizada.',
         ],
         faqs: [
             {
-                question: '¿Qué síntomas deberían motivar una consulta cardiológica?',
+                question: '¿Cuánto tiempo duran los rellenos?',
                 answer:
-                    'Dolor u opresión en el pecho, palpitaciones, falta de aire, mareos o antecedentes familiares requieren una evaluación temprana para descartar riesgos.',
+                    'Dependiendo de la zona y el tipo de gel, entre 9 y 18 meses. Los labios suelen requerir retoques antes que los pómulos o mentón.',
             },
             {
-                question: '¿Realizan pruebas de esfuerzo y estudios funcionales?',
+                question: '¿Es doloroso?',
                 answer:
-                    'Sí, contamos con ergometrías, holter y otros estudios que permiten valorar el rendimiento cardíaco y ajustar el tratamiento adecuado.',
+                    'Aplicamos anestesia tópica y lidocaína incorporada en el producto. El procedimiento es bien tolerado y dura entre 30 y 45 minutos.',
             },
             {
-                question: '¿Ofrecen programas de rehabilitación cardíaca?',
+                question: '¿Puedo realizar otras terapias el mismo día?',
                 answer:
-                    'Disponemos de planes supervisados por cardiólogos y fisioterapeutas que facilitan la recuperación progresiva después de un evento cardíaco o una cirugía.',
+                    'Podemos combinarlo con toxina botulínica o bioestimuladores en la misma visita. Tratamientos energéticos se programan en otra fecha para cuidar los tejidos.',
             },
         ],
     },
     {
-        title: 'Ortopedia',
-        image:
-            'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+        title: 'Eliminación de manchas',
+        image: '/imagenes-ecofet/eliminacion-manchas.jpg',
         intro:
-            'Cuidamos el sistema musculoesquelético con diagnósticos precisos, tratamientos mínimamente invasivos y rehabilitación personalizada.',
+            'Unificamos el tono y devolvemos luminosidad con peelings médicos, luz pulsada intensa (IPL) y protocolos despigmentantes personalizados.',
         benefits: [
-            'Atención integral para lesiones deportivas y traumatológicas.',
-            'Tecnología de imagen de alta definición para diagnósticos oportunos.',
-            'Planes de rehabilitación coordinados con fisioterapeutas especializados.',
+            'Tratamos melasma, discromías solares y manchas postinflamatorias.',
+            'Incluye diagnóstico con dermoscopia digital para medir avances reales.',
+            'Plan de skincare con activos aclaradores y fotoprotección a medida.',
         ],
         focus: [
-            'Evaluamos tu movilidad, historial clínico y objetivos funcionales para definir un tratamiento a medida que acelere la recuperación.',
-            'Integramos medicina regenerativa, fisioterapia avanzada y seguimiento constante para asegurar resultados duraderos.',
+            'Definimos el protocolo según tu fototipo y estilo de vida. Alternamos peelings, IPL y mesoterapia despigmentante para conseguir resultados graduales y seguros.',
+            'Te acompañamos con visitas de control y ajustes estacionales para mantener el tono uniforme durante todo el año.',
         ],
         faqs: [
             {
-                question: '¿Atienden lesiones deportivas?',
+                question: '¿Cuántas sesiones necesito?',
                 answer:
-                    'Sí, contamos con especialistas en medicina deportiva que evalúan y rehabilitan desgarros, esguinces y fracturas.',
+                    'Generalmente trabajamos entre 3 y 5 sesiones espaciadas cada 21 días, dependiendo de la profundidad de la mancha.',
             },
             {
-                question: '¿Ofrecen férulas o prótesis personalizadas?',
+                question: '¿Puedo tomar sol?',
                 answer:
-                    'Trabajamos con proveedores certificados para confeccionar órtesis, prótesis y plantillas adaptadas a cada paciente.',
+                    'Recomendamos evitar la exposición directa y utilizar protector solar médico reaplicado cada 2 horas. Te entregamos guía detallada.',
             },
             {
-                question: '¿Cómo es el proceso de rehabilitación?',
+                question: '¿El tratamiento es apto para pieles sensibles?',
                 answer:
-                    'Luego del diagnóstico, creamos un plan con ejercicios supervisados, control del dolor y seguimiento semanal para medir avances.',
+                    'Sí, adaptamos las concentraciones y seleccionamos activos antiinflamatorios para cuidar pieles sensibles o con rosácea.',
             },
         ],
     },
     {
-        title: 'Dermatología',
-        image:
-            'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop',
+        title: 'Tratamientos corporales',
+        image: '/imagenes-ecofet/tratamientos-corporales.jpg',
         intro:
-            'Cuidamos tu piel con diagnósticos precisos y procedimientos mínimamente invasivos para tratar afecciones dermatológicas y estéticas.',
+            'Modelamos y tonificamos tu silueta con aparatología reductora, drenaje linfático y planes completos de nutrición estética.',
         benefits: [
-            'Dermatoscopía digital para detección temprana.',
-            'Tratamientos para acné, rosácea, psoriasis y alergias.',
-            'Procedimientos estéticos seguros como peelings y luz pulsada.',
+            'Reduce adiposidad localizada y mejora la firmeza de la piel.',
+            'Favorece el drenaje, disminuye celulitis y sensación de pesadez.',
+            'Protocolos combinables con rutina de entrenamiento y suplementación.',
         ],
         focus: [
-            'Analizamos cada caso considerando antecedentes, estilo de vida y objetivos estéticos. Ofrecemos tratamientos efectivos con recuperación rápida.',
-            'Educamos sobre protección solar, rutinas de cuidado y hábitos para mantener una piel saludable durante todo el año.',
+            'Integramos criolipólisis, ondas acústicas y radiofrecuencia según tu objetivo corporal. Complementamos con masajes detox y recomendaciones alimenticias.',
+            'Medimos la evolución con bioimpedancia y fotografías clínicas para ajustar el plan en tiempo real.',
         ],
         faqs: [
             {
-                question: '¿Atienden lunares y lesiones sospechosas?',
+                question: '¿Necesito preparación previa?',
                 answer:
-                    'Sí, realizamos controles de lunares y biopsias en caso de detectar lesiones que requieran estudio histopatológico.',
+                    'Solo recomendamos buena hidratación y evitar cremas corporales el día del tratamiento. El resto lo planificamos juntas en la consulta inicial.',
             },
             {
-                question: '¿Los tratamientos estéticos tienen tiempo de inactividad?',
+                question: '¿Los resultados son permanentes?',
                 answer:
-                    'Indicamos procedimientos con mínimas molestias y tiempos de recuperación cortos, junto con instrucciones claras para el cuidado posterior.',
+                    'Se sostienen en el tiempo si acompañas con hábitos saludables. Nuestro equipo nutricional te guía para mantenerlos.',
             },
             {
-                question: '¿Tratan afecciones capilares?',
+                question: '¿Produce dolor?',
                 answer:
-                    'Disponemos de opciones para caída del cabello, dermatitis seborreica y otros trastornos del cuero cabelludo.',
+                    'Las tecnologías son confortables. Puedes sentir calor moderado o masajes intensos pero siempre dentro de un rango tolerable.',
             },
         ],
     },
     {
-        title: 'Odontología',
-        image: '/images/dental-img.jpg',
+        title: 'Rejuvenecimiento facial',
+        image: '/imagenes-ecofet/hero-about.jpg',
         intro:
-            'Brindamos odontología integral para todas las edades, enfocada en prevención, estética y rehabilitación funcional.',
+            'Combinamos bioestimuladores, vitaminas, luz LED y radiofrecuencia fraccionada para renovar textura, elasticidad y luminosidad.',
         benefits: [
-            'Limpiezas y controles periódicos para mantener una sonrisa sana.',
-            'Odontopediatría y ortodoncia para niños y adolescentes.',
-            'Implantes, prótesis y rehabilitación estética avanzada.',
+            'Mejora la calidad de la piel, cierra poros y suaviza líneas finas.',
+            'Activa la producción de colágeno y elastina de manera progresiva.',
+            'Sesiones personalizadas con protocolos signature y masajes relajantes.',
         ],
         focus: [
-            'Utilizamos tecnología digital para planificar tratamientos con precisión y reducir los tiempos en consultorio.',
-            'Cuidamos tu experiencia con anestesia indolora, ambientes relajados y explicaciones claras antes de cada procedimiento.',
+            'Seleccionamos la sinergia ideal entre Sculptra, Radiesse, PRP o mesoterapia vitamínica según las necesidades de cada rostro.',
+            'Finalizamos cada sesión con mascarillas cryo y fototerapia regeneradora para potenciar el glow inmediato.',
         ],
         faqs: [
             {
-                question: '¿Atienden urgencias odontológicas?',
+                question: '¿Cada cuánto debo repetirlo?',
                 answer:
-                    'Sí, contamos con guardias para dolor intenso, fracturas dentales y otras urgencias que requieran resolución inmediata.',
+                    'Recomendamos un plan inicial de 3 sesiones y luego mantenimientos estacionales para sostener la piel rejuvenecida.',
             },
             {
-                question: '¿Ofrecen planes de ortodoncia invisibles?',
+                question: '¿Hay tiempo de recuperación?',
                 answer:
-                    'Disponemos de alineadores transparentes y alternativas estéticas que se adaptan a tus necesidades y estilo de vida.',
+                    'Puedes retomar tu día inmediatamente. Solo sugerimos evitar sol directo y make-up durante 24 horas.',
             },
             {
-                question: '¿Realizan tratamientos de estética dental?',
+                question: '¿Se puede combinar con hilos o rellenos?',
                 answer:
-                    'Sí, trabajamos con carillas, blanqueamientos y restauraciones de alta precisión para lograr una sonrisa natural y armónica.',
+                    'Sí, es ideal para preparar la piel antes de hilos tensores o consolidar resultados después de rellenos.',
+            },
+        ],
+    },
+    {
+        title: 'Nutrición estética',
+        image: '/imagenes-ecofet/nutricion-estetica.jpg',
+        intro:
+            'Diseñamos planes nutricionales premium que acompañan tus objetivos estéticos y de bienestar desde el interior.',
+        benefits: [
+            'Planes flexibles adaptados a tus horarios y preferencias.',
+            'Suplementación y nutricosmética personalizada.',
+            'Monitoreo quincenal con ajustes según tu evolución.',
+        ],
+        focus: [
+            'Evaluamos hábitos, composición corporal y analíticas para crear un plan realista que potencie cada tratamiento estético.',
+            'Incorporamos recetas, listas de compras y herramientas digitales para que la experiencia sea sencilla y motivadora.',
+        ],
+        faqs: [
+            {
+                question: '¿Trabajan con diferentes estilos de alimentación?',
+                answer:
+                    'Sí, adaptamos la pauta a alimentación plant based, keto, low carb o tradicional, siempre priorizando salud y placer.',
+            },
+            {
+                question: '¿Incluye seguimiento online?',
+                answer:
+                    'Coordinamos check-ins virtuales y soporte vía WhatsApp para acompañarte en cada etapa.',
+            },
+            {
+                question: '¿Puedo combinarlo con actividad física?',
+                answer:
+                    '¡Claro! Ajustamos macronutrientes y suplementación según tu entrenamiento para optimizar rendimiento y recuperación.',
+            },
+        ],
+    },
+    {
+        title: 'Depilación láser',
+        image: '/imagenes-ecofet/depilacion-laser.jpg',
+        intro:
+            'Eliminamos el vello de forma progresiva y segura con láser de diodo con enfriamiento dinámico, apto para todo tipo de piel.',
+        benefits: [
+            'Sesiones rápidas y confortables con resultados visibles desde las primeras aplicaciones.',
+            'Protocolos específicos para pieles sensibles y áreas delicadas.',
+            'Incluye seguimiento y recordatorios personalizados entre sesiones.',
+        ],
+        focus: [
+            'Trabajamos con parámetros personalizados según fototipo y densidad de vello. Controlamos energía y temperatura para proteger la piel en todo momento.',
+            'Ofrecemos packs corporales completos y planes por zonas pequeñas para adaptarnos a tus necesidades y presupuesto.',
+        ],
+        faqs: [
+            {
+                question: '¿Cuántas sesiones se necesitan?',
+                answer:
+                    'El protocolo estándar es de 6 a 8 sesiones con intervalos de 30 a 45 días. Ajustamos la frecuencia según tu evolución.',
+            },
+            {
+                question: '¿Puedo tomar sol?',
+                answer:
+                    'Sugerimos evitar exposición directa 48 horas antes y después. Te brindamos fotoprotección acorde a tu fototipo.',
+            },
+            {
+                question: '¿Es doloroso?',
+                answer:
+                    'El manípulo con enfriamiento integrado reduce la sensibilidad. Puedes sentir un leve calor o chispas elásticas, siempre dentro de un rango tolerable.',
             },
         ],
     },
 ]
 
-const Details = () => {
-    const defaultTitle = serviceDetails[0].title
-    const [currentTab, setCurrentTab] = useState(defaultTitle)
+export default function ServiceDetails() {
     const searchParams = useSearchParams()
     const router = useRouter()
-    const id = searchParams.get('id')
+    const serviceTitle = searchParams.get('id') ?? serviceListings[0]?.title
+
+    const [activeTab, setActiveTab] = useState(serviceTitle)
 
     useEffect(() => {
-        if (!id) {
-            setCurrentTab(defaultTitle)
-            return
+        if (serviceTitle) {
+            setActiveTab(serviceTitle)
         }
-        const matchingService = serviceDetails.find(
-            (service) => service.title === id,
-        )
-        if (matchingService) {
-            setCurrentTab(matchingService.title)
-        } else {
-            setCurrentTab(defaultTitle)
-        }
-    }, [id, defaultTitle])
+    }, [serviceTitle])
 
-    const handleTabChange = (newTab: string) => {
-        setCurrentTab(newTab)
-        router.replace(
-            `/services/service-details?id=${encodeURIComponent(newTab)}`,
-            { scroll: false },
-        )
+    const handleTabChange = (value: string) => {
+        setActiveTab(value)
+        router.replace(`/services/service-details?id=${encodeURIComponent(value)}`)
     }
+
+    const currentService =
+        serviceDetails.find((service) => service.title === activeTab) ?? serviceDetails[0]
 
     return (
         <>
             <HeroSection
-                title={currentTab}
-                pageName="Detalle del servicio"
-                className="bg-[url(/images/service-bg.jpg)]"
+                title={currentService.title}
+                pageName="Tratamientos"
+                className="bg-[url(/imagenes-ecofet/hero-services.jpg)] bg-cover bg-center"
+                titleClassName="text-white"
+                pageNameClassName="text-white"
             />
+
             <div className="container py-16 lg:py-20">
                 <Tabs
-                    value={currentTab}
+                    value={activeTab}
                     onValueChange={handleTabChange}
-                    className="flex flex-col items-start gap-10 lg:flex-row"
+                    className="grid gap-10 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-14"
                 >
-                    <TabsList className="top-28 flex shrink-0 flex-row flex-wrap gap-2.5 rounded-2xl bg-gray-light p-3 sm:gap-4 sm:p-5 lg:sticky lg:w-80 lg:flex-col lg:flex-nowrap xl:w-96">
-                        {serviceListings.map((service) => (
+                    <TabsList className="grid h-max gap-4 rounded-3xl border border-white/10 bg-white/80 p-4 shadow-soft backdrop-blur lg:sticky lg:top-28">
+                        {serviceDetails.map((service) => (
                             <TabsTrigger
-                                value={service.title}
                                 key={service.title}
-                                className="rounded-xl border border-transparent bg-white px-4 py-3 text-left font-semibold text-primary transition hover:border-secondary/40 hover:text-secondary data-[state=active]:border-secondary/60 data-[state=active]:bg-secondary/10 data-[state=active]:text-secondary"
+                                value={service.title}
+                                className="rounded-xl border border-transparent bg-white/60 px-5 py-3 text-left font-semibold text-primary transition hover:border-secondary/50 data-[state=active]:border-secondary data-[state=active]:bg-secondary/15 data-[state=active]:text-secondary"
                             >
                                 {service.title}
                             </TabsTrigger>
                         ))}
-
-                        <div className="group relative mt-4 hidden w-full overflow-hidden rounded-2xl lg:block">
+                    </TabsList>
+                    <TabsContent value={currentService.title} className="space-y-10">
+                        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/80 shadow-soft backdrop-blur">
                             <Image
-                                src="/images/clinica-vitalis-equipo-especialista-4.webp"
-                                width={344}
-                                height={430}
-                                alt="Equipo de guardia"
-                                className="absolute inset-0 object-cover"
+                                src={currentService.image}
+                                alt={currentService.title}
+                                width={1200}
+                                height={720}
+                                className="h-full w-full object-cover"
                             />
-                            <div className="relative z-10 pt-48 text-center">
-                                <div className="relative mx-auto -mb-6 grid size-14 place-content-center rounded-full border-2 border-white bg-primary text-white transition group-hover:bg-white group-hover:text-secondary">
-                                    <PhoneCall className="size-6" />
-                                </div>
-                                <div className="bg-secondary/90 p-8 text-white">
-                                    <p className="text-xl">
-                                        LUN-SAB 8:00 - 21:00 h
-                                    </p>
-                                    <Link
-                                        href="tel:+34613296952"
-                                        className="mt-3 block text-2xl font-semibold underline-offset-2 transition hover:underline"
-                                    >
-                                        +34 613 29 69 52
-                                    </Link>
+                        </div>
+                        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
+                            <div className="space-y-5">
+                                <h2 className="text-2xl font-semibold text-primary">{currentService.title}</h2>
+                                <p className="text-base text-gray">{currentService.intro}</p>
+                                <div className="rounded-3xl border border-secondary/20 bg-secondary/10 p-6">
+                                    <h3 className="mb-3 text-lg font-semibold text-primary">Beneficios clave</h3>
+                                    <ul className="space-y-3 text-sm text-gray">
+                                        {currentService.benefits.map((benefit) => (
+                                            <li key={benefit} className="flex items-start gap-3">
+                                                <CheckCheck className="mt-0.5 size-4 shrink-0 text-secondary" />
+                                                <span>{benefit}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             </div>
+                            <div className="space-y-6">
+                                {currentService.focus.map((paragraph) => (
+                                    <p key={paragraph} className="text-sm text-gray">
+                                        {paragraph}
+                                    </p>
+                                ))}
+                                <Link
+                                    href="/contact-us"
+                                    className="inline-flex items-center gap-2 rounded-full border border-secondary bg-secondary px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#b58c4b]"
+                                >
+                                    <PhoneCall className="size-5" />
+                                    Reserva tu evaluación
+                                </Link>
+                            </div>
                         </div>
-                    </TabsList>
-                    <div className="grow">
-                        {serviceDetails.map((detail) => (
-                            <TabsContent key={detail.title} value={detail.title}>
-                                <div className="h-96 overflow-hidden rounded-xl">
-                                    <Image
-                                        src={detail.image}
-                                        alt={detail.title}
-                                        width={1016}
-                                        height={384}
-                                        className="h-full w-full object-cover"
-                                        priority={detail.title === currentTab}
-                                    />
-                                </div>
-                                <div className="prose mt-10 w-full max-w-none lg:prose-lg">
-                                    <div>
-                                        <h3>{detail.title}</h3>
-                                        <p>{detail.intro}</p>
-                                    </div>
-                                    <div>
-                                        <h3>¿Por qué elegir este servicio?</h3>
-                                        <ul>
-                                            {detail.benefits.map((benefit) => (
-                                                <li key={benefit}>
-                                                    <CheckCheck className="mr-2 inline size-4 text-secondary" />
-                                                    {benefit}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                    {detail.focus.map((text) => (
-                                        <p key={text}>{text}</p>
-                                    ))}
-                                </div>
-                                <div className="mt-8">
-                                    <h3 className="text-2xl font-semibold lg:text-3xl">
-                                        Preguntas frecuentes
-                                    </h3>
-                                    <Accordion
-                                        type="single"
-                                        collapsible
-                                        className="mt-5 space-y-4"
-                                    >
-                                        {detail.faqs.map((faq) => (
-                                            <AccordionItem
-                                                key={faq.question}
-                                                value={faq.question}
-                                            >
-                                                <AccordionTrigger>
-                                                    {faq.question}
-                                                </AccordionTrigger>
-                                                <AccordionContent>
-                                                    {faq.answer}
-                                                </AccordionContent>
-                                            </AccordionItem>
-                                        ))}
-                                    </Accordion>
-                                </div>
-                            </TabsContent>
-                        ))}
-                    </div>
+
+                        <Accordion type="single" collapsible className="space-y-4">
+                            {currentService.faqs.map((faq) => (
+                                <AccordionItem
+                                    key={faq.question}
+                                    value={faq.question}
+                                    className="overflow-hidden rounded-2xl border border-white/10 bg-white/70 shadow-soft backdrop-blur"
+                                >
+                                    <AccordionTrigger className="px-5 py-4 text-left text-sm font-semibold text-primary">
+                                        {faq.question}
+                                    </AccordionTrigger>
+                                    <AccordionContent className="px-5 pb-5 text-sm text-gray">
+                                        {faq.answer}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            ))}
+                        </Accordion>
+                    </TabsContent>
                 </Tabs>
             </div>
         </>
     )
 }
-
-export default Details

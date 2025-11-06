@@ -1,21 +1,21 @@
-import AppointmentSection from '@/components/custom/appointment-section'
+﻿import AppointmentSection from '@/components/custom/appointment-section'
 import HeroSection from '@/components/custom/hero-section'
 import SectionHeading from '@/components/custom/section-heading'
 import ServiceCard from '@/components/custom/service-card'
 import helper from '@/lib/helper'
 import { serviceListings } from '@/types/service'
-import { BookCheck, Headset, HeartHandshake, Stethoscope } from 'lucide-react'
 import { Metadata } from 'next'
+import { Sparkles, Zap, Waves, Droplet } from 'lucide-react'
 
 export const metadata: Metadata = {
-    title: 'Servicios | Clínica Vitalis',
+    title: 'Tratamientos | Ecofet Centro Médico Estético',
     description:
-        'Conoce el catálogo de servicios médicos de Clínica Vitalis: tratamientos integrales, especialistas certificados y atención personalizada.',
+        'Descubre los tratamientos boutique de Ecofet: hilos tensores, armonización facial, tecnología corporal y nutrición estética diseñados a tu medida.',
     openGraph: {
         ...helper.openGraphData,
-        title: 'Servicios | Clínica Vitalis',
+        title: 'Tratamientos | Ecofet Centro Médico Estético',
         description:
-            'Conoce el catálogo de servicios médicos de Clínica Vitalis: tratamientos integrales, especialistas certificados y atención personalizada.',
+            'Descubre los tratamientos boutique de Ecofet: hilos tensores, armonización facial, tecnología corporal y nutrición estética diseñados a tu medida.',
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
     },
@@ -24,33 +24,60 @@ export const metadata: Metadata = {
     },
 }
 
+const advantages = [
+    {
+        icon: Sparkles,
+        title: 'Protocolos exclusivos',
+        description:
+            'Combinamos técnicas avanzadas con rituales sensoriales para lograr resultados visibles y elegantes desde la primera sesión.',
+    },
+    {
+        icon: Droplet,
+        title: 'Activos premium',
+        description:
+            'Trabajamos con bioestimuladores, neuromoduladores y cosmética médica avalada para potenciar cada tratamiento.',
+    },
+    {
+        icon: Zap,
+        title: 'Tecnología inteligente',
+        description:
+            'Aparatología de última generación para modelar, regenerar y revitalizar cuidando cada detalle de tu piel.',
+    },
+    {
+        icon: Waves,
+        title: 'Seguimiento personalizado',
+        description:
+            'Después de cada sesión te acompañamos con guías post tratamiento y controles digitales para prolongar los resultados.',
+    },
+]
+
 export default function Services() {
     return (
         <>
             <HeroSection
-                title="Nuestros servicios"
-                pageName="Servicios"
-                className="bg-[url(/images/service-bg.jpg)]"
+                title="Tratamientos signature"
+                pageName="Tratamientos"
+                className="bg-[url(/imagenes-ecofet/hero-services.jpg)] bg-cover bg-center"
+                titleClassName="text-white"
+                pageNameClassName="text-white"
             />
 
             <div className="container my-16 lg:my-20">
-                <div className="relative mx-auto w-full rounded-[28px] border-2 border-gray/10 bg-secondary/10 p-4 backdrop-blur-xl sm:p-7 lg:px-10 lg:py-12">
-                    <Stethoscope className="absolute right-10 top-10 size-24 shrink-0 rotate-6 stroke-1 text-secondary opacity-10" />
+                <div className="relative mx-auto w-full rounded-[32px] border border-white/10 bg-white/75 p-6 shadow-soft backdrop-blur-xl sm:p-10">
                     <SectionHeading
-                        tag="Especialidades"
+                        tag="Colección Ecofet"
                         title={
                             <>
-                                Mucho más que servicios
-                                <span className="font-normal italic">
-                                    &nbsp;soluciones de salud completas
-                                </span>
+                                Tratamientos que celebran
+                                <span className="font-normal italic"> &nbsp;tu belleza natural</span>
                             </>
                         }
-                        titleClassName="max-w-[620px]"
-                        description="En Clínica Vitalis reunimos profesionales multidisciplinarios, tecnología moderna y protocolos actualizados para ofrecer diagnósticos precisos, tratamientos integrales y acompañamiento continuo."
-                        descriptionClassName="max-w-xl"
+                        titleClassName="max-w-3xl"
+                        description="Seleccionamos protocolos de medicina estética que equilibran lifting, luminosidad y bienestar corporal. Cada servicio puede combinarse entre sí para construir tu experiencia ideal."
+                        descriptionClassName="max-w-2xl"
+                        className="text-left"
                     />
-                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
                         {serviceListings.map((service) => (
                             <ServiceCard key={service.id} data={service} />
                         ))}
@@ -58,41 +85,17 @@ export default function Services() {
                 </div>
             </div>
 
-            <div className="bg-primary py-14">
-                <div className="container grid lg:grid-cols-3">
-                    <div className="flex items-start gap-5 py-6 lg:px-8">
-                        <span className="grid size-16 shrink-0 place-content-center rounded-full border-4 border-gray-light bg-white text-secondary">
-                            <HeartHandshake className="size-8" />
-                        </span>
-                        <div className="text-white">
-                            <h3 className="text-xl">Programas personalizados</h3>
-                            <p className="mt-1 font-light text-gray-light">
-                                Diseñamos planes a medida: desde chequeos preventivos hasta terapias de rehabilitación guiadas paso a paso.
-                            </p>
+            <div className="bg-primary/95 py-16 text-white">
+                <div className="container grid gap-8 lg:grid-cols-4">
+                    {advantages.map(({ icon: Icon, title, description }) => (
+                        <div key={title} className="flex h-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-[0_22px_55px_rgba(12,10,10,0.35)]">
+                            <span className="grid size-12 place-content-center rounded-xl bg-white/20 text-secondary">
+                                <Icon className="size-6" />
+                            </span>
+                            <h3 className="text-lg font-semibold">{title}</h3>
+                            <p className="text-sm text-gray-light">{description}</p>
                         </div>
-                    </div>
-                    <div className="flex items-start gap-5 border-y-2 border-secondary/40 py-6 lg:border-y-0 lg:border-x-2 lg:px-8">
-                        <span className="grid size-16 shrink-0 place-content-center rounded-full border-4 border-gray-light bg-white text-secondary">
-                            <Headset className="size-8" />
-                        </span>
-                        <div className="text-white">
-                            <h3 className="text-xl">Emergencias 24/7</h3>
-                            <p className="mt-1 font-light text-gray-light">
-                                Nuestro equipo de guardia responde de inmediato, coordinando traslados, evaluaciones y atención prioritaria en cualquier horario.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-5 py-6 lg:px-8">
-                        <span className="grid size-16 shrink-0 place-content-center rounded-full border-4 border-gray-light bg-white text-secondary">
-                            <BookCheck className="size-8" />
-                        </span>
-                        <div className="text-white">
-                            <h3 className="text-xl">Resultados digitales</h3>
-                            <p className="mt-1 font-light text-gray-light">
-                                Accede a informes y estudios desde nuestro portal seguro, comparte con tu médico y recibe seguimiento en línea.
-                            </p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
@@ -106,11 +109,11 @@ export default function Services() {
                     __html: `{
                         "@context": "https://schema.org",
                         "@type": "WebSite",
-                        "name": "Servicios",
+                        "name": "Tratamientos Ecofet",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Servicios médicos integrales de Clínica Vitalis.",
+                        "description": "Tratamientos boutique de Ecofet Centro Médico Estético.",
                         "inLanguage": "es",
-                        "image": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png",
+                        "image": "${process.env.NEXT_PUBLIC_APP_URL}/imagenes-ecofet/ecofet.svg",
                         "breadcrumb": {
                             "@type": "BreadcrumbList",
                             "itemListElement": [{
@@ -121,7 +124,7 @@ export default function Services() {
                             },{
                                 "@type": "ListItem",
                                 "position": 2,
-                                "name": "Servicios",
+                                "name": "Tratamientos",
                                 "item": "${process.env.NEXT_PUBLIC_APP_URL}/services"
                             }]
                         }
@@ -131,3 +134,5 @@ export default function Services() {
         </>
     )
 }
+
+

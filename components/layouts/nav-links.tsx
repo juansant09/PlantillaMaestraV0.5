@@ -5,7 +5,7 @@ const NavLinks = ({ className }: any) => {
     return (
         <ul
             className={cn(
-                'shrink-0 flex-col gap-3 border-y border-secondary/20 pb-7 pt-5 xl:w-1/2 xl:flex-row xl:items-center xl:justify-center xl:gap-7 xl:border-none xl:py-0',
+                'shrink-0 flex-col gap-3 border-y border-white/10 pb-6 pt-4 text-sm uppercase tracking-[0.28em] text-gray-light xl:flex-row xl:items-center xl:justify-center xl:gap-7 xl:border-none xl:py-0 xl:text-xs',
                 className,
             )}
         >
@@ -21,7 +21,7 @@ const NavLinks = ({ className }: any) => {
                 </NavLink>
             </li>
             <li>
-                <NavLink href="/doctors">Doctores</NavLink>
+                <NavLink href="/doctors">Especialistas</NavLink>
             </li>
             <li>
                 <NavLink href="/contact-us">Contacto</NavLink>

@@ -1,11 +1,5 @@
-import NavLinks from '@/components/layouts/nav-links'
-import {
-    CalendarClock,
-    Mail,
-    MapPin,
-    Phone,
-    Send,
-} from 'lucide-react'
+﻿import NavLinks from '@/components/layouts/nav-links'
+import { CalendarClock, Mail, MapPin, Phone, Send } from 'lucide-react'
 import Link from 'next/link'
 import IconFaceBook from '@/components/icons/icon-facebook'
 import IconTwitter from '@/components/icons/icon-twitter'
@@ -18,135 +12,113 @@ import { Button } from '@/components/ui/button'
 import AppointmentDailogBox from '@/components/custom/appointment-dailog-box'
 import Image from 'next/image'
 
+const socials = [
+    { href: 'https://www.instagram.com/', icon: IconInstagram, label: 'Instagram' },
+    { href: 'https://www.facebook.com/', icon: IconFaceBook, label: 'Facebook' },
+    { href: 'https://www.linkedin.com/', icon: IconLinkedin, label: 'LinkedIn' },
+    { href: 'https://twitter.com/', icon: IconTwitter, label: 'Twitter' },
+]
+
 export default function Sidebar() {
     return (
-        <div className="flex h-full flex-col justify-between gap-14 bg-primary pt-5 duration-500">
-            <div className="grow px-6">
-                <div className="mb-5 xl:pt-8">
-                    <Link href="/" className="inline-block">
-                        <Image
-                            src="/images/logo-vitalis.svg"
-                            alt="Logotipo de Clínica Vitalis"
-                            width={140}
-                            height={32}
-                            className="h-auto w-36"
-                        />
-                    </Link>
-                </div>
-                <SheetDescription className="hidden text-gray-light xl:block">
-                    Brindamos salud de calidad con compasión y confianza. Su
-                    bienestar es nuestra máxima prioridad en cada paso del camino.
+        <div className="flex h-full flex-col justify-between gap-12 bg-primary px-6 pt-6 pb-10 text-white">
+            <div className="space-y-8">
+                <Link href="/" className="block text-center" aria-label="Inicio Ecofet">
+                    <Image
+                        src="/imagenes-ecofet/ecofetlogo.svg"
+                        alt="Logotipo Ecofet"
+                        width={220}
+                        height={120}
+                        className="mx-auto h-auto w-40 md:w-52"
+                        priority
+                    />
+                    <p className="mt-4 text-sm uppercase tracking-[0.48em] text-secondary/90">
+                        Centro Médico Estético
+                    </p>
+                </Link>
+
+                <SheetDescription className="text-gray-light">
+                    Experiencias estéticas de autor, con seguimiento médico cercano y espacios diseñados para tu bienestar.
                 </SheetDescription>
 
-                <NavLinks className="flex xl:hidden" />
+                <NavLinks className="flex flex-col xl:hidden" />
 
-                <div className="py-5 lg:py-10">
-                    <div className="mb-5 inline-block whitespace-nowrap border-b border-secondary pb-1.5 text-xl font-bold text-white lg:text-2xl">
-                        Contacto
+                <div className="space-y-6 border-t border-white/10 pt-6">
+                    <h3 className="text-lg font-semibold text-secondary">Contáctanos</h3>
+                    <div className="flex items-start gap-3 text-gray-light">
+                        <MapPin className="mt-0.5 size-5 text-secondary" />
+                        <p>Av. Belleza 1280, Piso 5 – Recoleta, Buenos Aires</p>
                     </div>
-                    <div className="space-y-5">
-                        <div className="flex gap-2.5 text-gray-light">
-                            <span>
-                                <MapPin className="mt-0.5 size-5 shrink-0 fill-secondary text-primary" />
-                            </span>
-                            <p>Avenida del Parque 18</p>
-                        </div>
-                        <div className="flex gap-2.5 text-gray-light">
-                            <span>
-                                <Mail className="mt-0.5 size-5 shrink-0 text-secondary" />
-                            </span>
-                            <Link
-                                href="mailto:info@vitalis.com"
-                                className="break-all transition hover:opacity-70"
-                            >
-                                info@vitalis.com
-                            </Link>
-                        </div>
-                        <div className="flex gap-2.5 text-gray-light">
-                            <span>
-                                <Phone className="mt-0.5 size-5 shrink-0 fill-secondary text-primary" />
-                            </span>
-                            <Link
-                                href="tel:+34686358791"
-                                className="transition hover:opacity-70"
-                            >
-                                +34 686 35 87 91
-                            </Link>
-                        </div>
+                    <div className="flex items-center gap-3 text-gray-light">
+                        <Mail className="size-5 text-secondary" />
+                        <Link href="mailto:hola@ecofet.com" className="hover:text-secondary">
+                            hola@ecofet.com
+                        </Link>
                     </div>
-                    <div className="mt-5 block xl:hidden">
+                    <div className="flex items-center gap-3 text-gray-light">
+                        <Phone className="size-5 text-secondary" />
+                        <Link href="tel:+541123456789" className="hover:text-secondary">
+                            +54 11 2345 6789
+                        </Link>
+                    </div>
+                    <div className="block xl:hidden">
                         <Dialog>
                             <DialogTrigger asChild>
                                 <Button
                                     type="button"
-                                    className="mt-4! w-full xl:mt-0!"
+                                    className="mt-5 w-full bg-secondary text-white shadow-[0_12px_30px_rgba(200,164,106,0.35)] hover:bg-[#b58c4b]"
                                 >
-                                    <CalendarClock className="size-5 shrink-0" />
-                                    Pide una cita
+                                    <CalendarClock className="size-5" />
+                                    Reserva tu cita
                                 </Button>
                             </DialogTrigger>
-                            <DialogContent>
+                            <DialogContent className="border-none bg-white/95 backdrop-blur-lg">
                                 <AppointmentDailogBox />
                             </DialogContent>
                         </Dialog>
                     </div>
                 </div>
 
-                <div className="hidden xl:block">
-                    <div className="mb-5 inline-block whitespace-nowrap border-b border-secondary pb-1.5 text-2xl font-bold text-white">
-                        Boletín
-                    </div>
+                <div className="hidden space-y-4 xl:block">
+                    <h3 className="text-lg font-semibold text-secondary">Newsletter</h3>
+                    <p className="text-sm text-gray-light">
+                        Inspírate con nuestras novedades, lanzamientos y rituales de autocuidado.
+                    </p>
                     <form className="relative flex">
                         <Input
-                            type="text"
-                            className="rounded-l-lg border border-transparent bg-secondary/30 py-3 placeholder:text-white focus:border-secondary focus:text-white"
-                            placeholder="Correo electrónico"
+                            type="email"
+                            className="rounded-l-xl border border-transparent bg-white/10 py-3 text-white placeholder:text-gray-light focus:border-secondary"
+                            placeholder="Tu correo electrónico"
                         />
                         <button
-                            type="button"
-                            className="grid w-11 shrink-0 place-content-center rounded-r-lg bg-secondary p-2 text-white transition hover:opacity-80"
+                            type="submit"
+                            className="grid w-12 shrink-0 place-content-center rounded-r-xl bg-secondary text-white transition hover:bg-[#b58c4b]"
                         >
-                            <Send className="size-6 shrink-0" />
+                            <Send className="size-5" />
                             <span className="sr-only">Enviar</span>
                         </button>
                     </form>
                 </div>
             </div>
-            <div className="mt-auto flex flex-col items-center gap-3 border-t-2 border-secondary/20 py-6">
-                <div className="inline-block whitespace-nowrap text-base font-medium text-white">
-                    Síguenos
-                </div>
+
+            <div className="flex flex-col items-center gap-3 border-t border-white/10 pt-6">
+                <span className="text-sm uppercase tracking-[0.3em] text-gray-light">Síguenos</span>
                 <div className="flex gap-3">
-                    <Link
-                        href="https://www.facebook.com/sharer/sharer.php?u=https://healthcare-theme-html.vercel.app/"
-                        className="grid size-8 place-content-center rounded-full bg-secondary text-gray-100 transition hover:bg-white hover:text-secondary"
-                    >
-                        <IconFaceBook className="size-5 shrink-0" />
-                        <span className="sr-only">Facebook</span>
-                    </Link>
-                    <Link
-                        href="https://twitter.com/intent/tweet?url=https://healthcare-theme-html.vercel.app/&text="
-                        className="grid size-8 place-content-center rounded-full bg-secondary text-gray-100 transition hover:bg-white hover:text-secondary"
-                    >
-                        <IconTwitter className="size-5 shrink-0" />
-                        <span className="sr-only">Twitter</span>
-                    </Link>
-                    <Link
-                        href="https://www.instagram.com/?url=https%3A%2F%2Fhealthcare-theme-html.vercel.app%2F"
-                        className="grid size-8 place-content-center rounded-full bg-secondary text-gray-100 transition hover:bg-white hover:text-secondary"
-                    >
-                        <IconInstagram className="size-5 shrink-0" />
-                        <span className="sr-only">Instagram</span>
-                    </Link>
-                    <Link
-                        href="https://www.linkedin.com/shareArticle?mini=true&url=https://healthcare-theme-html.vercel.app/"
-                        className="grid size-8 place-content-center rounded-full bg-secondary text-gray-100 transition hover:bg-white hover:text-secondary"
-                    >
-                        <IconLinkedin className="size-5 shrink-0" />
-                        <span className="sr-only">LinkedIn</span>
-                    </Link>
+                    {socials.map(({ href, icon: Icon, label }) => (
+                        <Link
+                            key={label}
+                            href={href}
+                            className="grid size-9 place-content-center rounded-full border border-white/20 bg-white/10 text-white transition hover:border-secondary hover:text-secondary"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <Icon className="size-5" />
+                            <span className="sr-only">{label}</span>
+                        </Link>
+                    ))}
                 </div>
             </div>
         </div>
     )
 }
+

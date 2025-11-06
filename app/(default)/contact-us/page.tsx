@@ -19,14 +19,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-    title: 'Contacto | Clínica Vitalis',
+    title: 'Contacto | Ecofet Centro Médico Estético',
     description:
-        'Comunícate con Clínica Vitalis para reservar turnos, resolver dudas y recibir asistencia personalizada.',
+        'Comunícate con Ecofet Centro Médico Estético para reservar turnos, resolver dudas y recibir asistencia personalizada.',
     openGraph: {
         ...helper.openGraphData,
-        title: 'Contacto | Clínica Vitalis',
+        title: 'Contacto | Ecofet Centro Médico Estético',
         description:
-            'Comunícate con Clínica Vitalis para reservar turnos, resolver dudas y recibir asistencia personalizada.',
+            'Comunícate con Ecofet Centro Médico Estético para reservar turnos, resolver dudas y recibir asistencia personalizada.',
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
     },
@@ -194,7 +194,7 @@ export default function ContactUs() {
                         "@type": "WebSite",
                         "name": "Contacto",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Comunícate con Clínica Vitalis para reservas y asistencia.",
+                        "description": "Comunícate con Ecofet Centro Médico Estético para reservas y asistencia.",
                         "inLanguage": "es",
                         "image": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png",
                         "breadcrumb": {

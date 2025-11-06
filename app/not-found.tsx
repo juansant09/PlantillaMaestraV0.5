@@ -5,12 +5,12 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-    title: '404 | Clínica Vitalis',
+    title: '404 | Ecofet Centro Médico Estético',
     description:
-        'La página solicitada no existe. Regresa al inicio para seguir navegando por Clínica Vitalis.',
+        'La página solicitada no existe. Regresa al inicio para seguir navegando por Ecofet Centro Médico Estético.',
     openGraph: {
         ...helper.openGraphData,
-        title: '404 | Clínica Vitalis',
+        title: '404 | Ecofet Centro Médico Estético',
         description:
             'La página solicitada no existe. Encuentra toda la información en nuestro inicio.',
         url: process.env.NEXT_PUBLIC_APP_URL,

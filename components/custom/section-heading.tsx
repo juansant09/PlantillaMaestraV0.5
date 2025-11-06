@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { HeartPulse } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 
 const SectionHeading = ({
     tag,
@@ -26,7 +26,7 @@ const SectionHeading = ({
                     tagClassName,
                 )}
             >
-                <HeartPulse className="flipheart size-5 shrink-0" />
+                <Sparkles className="size-5 shrink-0 text-secondary" />
                 {tag}
             </div>
             <h2
