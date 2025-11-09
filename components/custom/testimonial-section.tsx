@@ -1,3 +1,4 @@
+
 'use client'
 
 import Image from 'next/image'
@@ -17,15 +18,29 @@ import {
 import CountsUp from '@/components/custom/counts-up'
 import { CLINICA } from '@/config/clinic'
 
-const testimonialdata: ITestimonialData[] = CLINICA.testimonios.map((testimonio, index) => ({
-    id: index + 1,
-    image: testimonio.imagen,
-    name: testimonio.nombre,
-    speciality: testimonio.especialidad,
-    message: `“${testimonio.mensaje}”`,
-}))
+type FloatingProfile = {
+    id?: string | number
+    src?: string
+    alt?: string
+    className?: string
+    width?: number
+    height?: number
+}
 
-const floatingProfiles = CLINICA.testimoniosPerfiles
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const testimonials = Array.isArray(clinic.testimonios) ? clinic.testimonios : []
+const testimonialdata: ITestimonialData[] = testimonials.map((testimonio, index) => ({
+    id: index + 1,
+    image: testimonio?.imagen ?? '/images/clinica-vitalis-paciente-satisfecho-1.webp',
+    name: testimonio?.nombre ?? `Paciente ${index + 1}`,
+    speciality: testimonio?.especialidad ?? '',
+    message: testimonio?.mensaje ?? '',
+}))
+const floatingProfiles: FloatingProfile[] = Array.isArray(clinic.testimoniosPerfiles)
+    ? (clinic.testimoniosPerfiles as FloatingProfile[])
+    : []
+const stats = Array.isArray(clinic.stats) ? clinic.stats : []
+const images = clinic.imagenes ?? {}
 
 const statsIconMap = {
     ShieldPlus,
@@ -39,18 +54,18 @@ export default function TestimonialSection() {
         <div
             className="overflow-hidden bg-gray-100 bg-contain bg-center bg-no-repeat"
             style={{
-                backgroundImage: `url(${CLINICA.imagenes.testimoniosFondo})`,
+                backgroundImage: `url(${images.testimoniosFondo ?? '/images/map.png'})`,
             }}
         >
             <div className="container relative mx-auto pt-12 text-center sm:max-w-4xl lg:pt-20">
-                {floatingProfiles.map((profile) => (
+                {floatingProfiles.map((profile, index) => (
                     <Image
-                        key={profile.id}
-                        src={profile.src}
-                        alt={profile.alt}
-                        width={profile.width ?? 96}
-                        height={profile.height ?? 96}
-                        className={`jump absolute rounded-full border-4 border-white object-cover shadow-lg ${profile.className}`}
+                        key={profile?.id ?? index}
+                        src={profile?.src ?? images.default ?? '/images/centro.jpg'}
+                        alt={profile?.alt ?? 'Paciente satisfecho'}
+                        width={profile?.width ?? 96}
+                        height={profile?.height ?? 96}
+                        className={`jump absolute rounded-full border-4 border-white object-cover shadow-lg ${profile?.className ?? ''}`}
                     />
                 ))}
                 <Swiper
@@ -75,8 +90,8 @@ export default function TestimonialSection() {
                         prevEl: '.testimonials-btn-prev',
                     }}
                 >
-                    {testimonialdata?.map((item, index) => (
-                        <SwiperSlide key={index} className="swiper-slide">
+                    {testimonialdata.map((item) => (
+                        <SwiperSlide key={item.id} className="swiper-slide">
                             <div className="mx-auto mb-5 size-32 overflow-hidden rounded-full">
                                 <Image
                                     src={item.image}
@@ -87,16 +102,10 @@ export default function TestimonialSection() {
                                 />
                             </div>
                             <div className="mb-7 space-y-1 lg:mb-10">
-                                <h3 className="text-xl/6 font-semibold text-primary">
-                                    {item.name}
-                                </h3>
-                                <p className="text-sm text-secondary">
-                                    {item.speciality}
-                                </p>
+                                <h3 className="text-xl/6 font-semibold text-primary">{item.name}</h3>
+                                <p className="text-sm text-secondary">{item.speciality}</p>
                             </div>
-                            <p className="text-base/6 text-gray lg:text-xl/8">
-                                {item.message}
-                            </p>
+                            <p className="text-base/6 text-gray lg:text-xl/8">{item.message}</p>
                         </SwiperSlide>
                     ))}
                 </Swiper>
@@ -121,21 +130,25 @@ export default function TestimonialSection() {
             <div className="container">
                 <div className="rounded-full bg-gray-light p-px"></div>
                 <div className="grid grid-cols-2 gap-x-3 gap-y-7 py-14 md:grid-cols-4 lg:py-20">
-                    {CLINICA.stats.map((stat) => {
-                        const Icon = statsIconMap[stat.icon as keyof typeof statsIconMap] ?? ShieldPlus
+                    {stats.map((stat, index) => {
+                        const Icon = statsIconMap[stat?.icon as keyof typeof statsIconMap] ?? ShieldPlus
                         return (
-                            <div key={stat.descripcion} className="space-y-1">
+                            <div key={stat?.descripcion ?? index} className="space-y-1">
                                 <div className="flex flex-col items-center justify-center gap-3 text-2xl font-bold sm:text-4xl">
                                     <Icon className="size-10 shrink-0 text-secondary" />
                                     <CountsUp
                                         start={0}
-                                        end={stat.valor}
+                                        end={
+                                            typeof stat?.valor === 'number'
+                                                ? stat.valor
+                                                : Number(stat?.valor) || 0
+                                        }
                                         duration={3}
                                         delay={0}
-                                        suffix={stat.sufijo}
+                                        suffix={stat?.sufijo ?? ''}
                                     />
                                 </div>
-                                <p className="text-center text-gray">{stat.descripcion}</p>
+                                <p className="text-center text-gray">{stat?.descripcion ?? ''}</p>
                             </div>
                         )
                     })}

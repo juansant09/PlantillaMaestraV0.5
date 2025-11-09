@@ -24,24 +24,32 @@ const hexToRgb = (hex: string) => {
     return `${r} ${g} ${b}`
 }
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://clinicavitalis.com'
+const clinicColors = clinic.colores ?? {}
+const colors = {
+    fondo: clinicColors.fondo ?? '#f9f9f9',
+    primario: clinicColors.primario ?? '#111111',
+    secundario: clinicColors.secundario ?? '#333333',
+}
+const seo = clinic.seo ?? {}
 const colorVariables = {
-    '--color-base': CLINICA.colores.fondo,
-    '--color-base-rgb': hexToRgb(CLINICA.colores.fondo),
-    '--color-primario': CLINICA.colores.primario,
-    '--color-primario-rgb': hexToRgb(CLINICA.colores.primario),
-    '--color-secundario': CLINICA.colores.secundario,
-    '--color-secundario-rgb': hexToRgb(CLINICA.colores.secundario),
+    '--color-base': colors.fondo,
+    '--color-base-rgb': hexToRgb(colors.fondo),
+    '--color-primario': colors.primario,
+    '--color-primario-rgb': hexToRgb(colors.primario),
+    '--color-secundario': colors.secundario,
+    '--color-secundario-rgb': hexToRgb(colors.secundario),
 } as CSSProperties
 
 export const metadata: Metadata = {
-    title: CLINICA.seo.titulo,
-    description: CLINICA.seo.descripcion,
-    keywords: CLINICA.seo.palabrasClave,
+    title: seo.titulo ?? 'Clínica Vitalis',
+    description: seo.descripcion ?? 'Clínica especializada en medicina estética y bienestar.',
+    keywords: seo.palabrasClave ?? 'medicina estética, clínica vitalis',
     openGraph: {
         ...helper.openGraphData,
-        title: CLINICA.seo.titulo,
-        description: CLINICA.seo.descripcion,
+        title: seo.titulo ?? 'Clínica Vitalis',
+        description: seo.descripcion ?? 'Clínica especializada en medicina estética y bienestar.',
         url: appUrl,
         type: 'website',
     },
@@ -50,8 +58,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         site: '@clinicavitalis',
-        title: CLINICA.seo.titulo,
-        description: CLINICA.seo.descripcion,
+        title: seo.titulo ?? 'Clínica Vitalis',
+        description: seo.descripcion ?? 'Clínica especializada en medicina estética y bienestar.',
     },
     robots: {
         index: true,

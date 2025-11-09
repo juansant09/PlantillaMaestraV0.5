@@ -19,14 +19,19 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const contactDescription = `Comunícate con ${CLINICA.nombre} en ${CLINICA.ciudad} para reservar turnos, resolver dudas y recibir asistencia personalizada. ${CLINICA.slogan}`
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const clinicName = clinic.nombre ?? 'Clinica Vitalis'
+const clinicCity = clinic.ciudad ?? 'Lucena'
+const clinicSlogan = clinic.slogan ?? ''
+const images = clinic.imagenes ?? {}
+const contactDescription = `Comunícate con ${clinicName} en ${clinicCity} para reservar turnos, resolver dudas y recibir asistencia personalizada. ${clinicSlogan}`
 
 export const metadata: Metadata = {
-    title: `Contacto | ${CLINICA.nombre}`,
+    title: `Contacto | ${clinicName}`,
     description: contactDescription,
     openGraph: {
         ...helper.openGraphData,
-        title: `Contacto | ${CLINICA.nombre}`,
+        title: `Contacto | ${clinicName}`,
         description: contactDescription,
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
@@ -37,8 +42,13 @@ export const metadata: Metadata = {
 }
 
 export default function ContactUs() {
-    const telefonoHref = CLINICA.telefono.replace(/\s+/g, '')
-    const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(CLINICA.ciudad)}&output=embed`
+    const telefono = clinic.telefono ?? ''
+    const telefonoHref = telefono.replace(/\s+/g, '')
+    const phoneLink = telefonoHref ? `tel:${telefonoHref}` : '#'
+    const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(clinicCity)}&output=embed`
+    const whatsappUrl = clinic.whatsapp ?? '#'
+    const direccion = clinic.direccion ?? ''
+    const email = clinic.email ?? 'hola@example.com'
 
     return (
         <>
@@ -54,7 +64,7 @@ export default function ContactUs() {
                         <SectionHeading
                             className="mb-0"
                             titleClassName="mb-0 max-w-sm"
-                            tag={`${CLINICA.nombre} responde`}
+                            tag={`${clinicName} responde`}
                             title={
                                 <>
                                     ¿Tienes dudas
@@ -63,7 +73,7 @@ export default function ContactUs() {
                                     </span>
                                 </>
                             }
-                            description={`Nuestro equipo en ${CLINICA.ciudad} gestiona turnos, presupuestos y urgencias con la rapidez y calidez que mereces.`}
+                            description={`Nuestro equipo en ${clinicCity} gestiona turnos, presupuestos y urgencias con la rapidez y calidez que mereces.`}
                             descriptionClassName="max-w-md"
                         />
                         <div className="mt-8 flex flex-col divide-y divide-dashed divide-secondary/20">
@@ -76,10 +86,10 @@ export default function ContactUs() {
                                         Reserva telefónica:
                                     </p>
                                     <Link
-                                        href={`tel:${telefonoHref}`}
+                                        href={phoneLink}
                                         className="block font-semibold text-primary transition hover:underline"
                                     >
-                                        {CLINICA.telefono}
+                                        {telefono || 'N/D'}
                                     </Link>
                                 </div>
                             </div>
@@ -90,7 +100,7 @@ export default function ContactUs() {
                                 <div className="space-y-1">
                                     <p className="text-gray">WhatsApp directo:</p>
                                     <Link
-                                        href={CLINICA.whatsapp}
+                                        href={whatsappUrl}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="block font-semibold text-primary transition hover:underline"
@@ -106,7 +116,7 @@ export default function ContactUs() {
                                 <div className="space-y-1">
                                     <p className="text-gray">Visítanos:</p>
                                     <p className="font-semibold text-primary">
-                                        {CLINICA.nombre} · {CLINICA.ciudad}, España
+                                        {clinicName} · {clinicCity}, España
                                     </p>
                                 </div>
                             </div>
@@ -188,7 +198,7 @@ export default function ContactUs() {
                     width="100%"
                     height="500"
                     loading="lazy"
-                    title={`Ubicación de ${CLINICA.nombre}`}
+                    title={`Ubicación de ${clinicName}`}
                     allowFullScreen
                 ></iframe>
             </div>
@@ -199,9 +209,9 @@ export default function ContactUs() {
                     __html: `{
                         "@context": "https://schema.org",
                         "@type": "WebSite",
-                        "name": "Contacto ${CLINICA.nombre}",
+                        "name": "Contacto ${clinicName}",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Comunícate con ${CLINICA.nombre} para reservas y asistencia.",
+                        "description": "Comunícate con ${clinicName} para reservas y asistencia.",
                         "inLanguage": "es",
                         "image": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png",
                         "breadcrumb": {

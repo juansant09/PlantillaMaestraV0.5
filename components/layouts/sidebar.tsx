@@ -21,33 +21,53 @@ import AppointmentDailogBox from '@/components/custom/appointment-dailog-box'
 import Image from 'next/image'
 import { CLINICA } from '@/config/clinic'
 
-const socials = [
-    { href: CLINICA.redes.instagram, icon: IconInstagram, label: 'Instagram' },
-    { href: CLINICA.redes.facebook, icon: IconFaceBook, label: 'Facebook' },
-    { href: CLINICA.redes.linkedin, icon: IconLinkedin, label: 'LinkedIn' },
-    { href: CLINICA.redes.twitter, icon: IconTwitter, label: 'Twitter' },
-]
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const images = clinic.imagenes ?? {}
+const clinicRedes = clinic.redes ?? {}
+const redes = {
+    instagram: clinicRedes.instagram ?? '#',
+    facebook: clinicRedes.facebook ?? '#',
+    linkedin: clinicRedes.linkedin ?? '#',
+    twitter: clinicRedes.twitter ?? '#',
+}
+const heroCtas = Array.isArray(clinic.hero?.ctas) ? clinic.hero.ctas : []
+const primaryCtaLabel = heroCtas[0]?.label ?? 'Reserva tu cita'
 
 export default function Sidebar() {
+    const clinicName = clinic.nombre ?? 'Clínica Vitalis'
+    const slogan = clinic.slogan ?? 'Cuidado integral'
+    const descripcion = clinic.descripcion ?? ''
+    const direccion = clinic.direccion ?? ''
+    const email = clinic.email ?? 'hola@example.com'
+    const telefono = clinic.telefono ?? ''
+    const telefonoHref = telefono ? `tel:${telefono.replace(/\s+/g, '')}` : '#'
+    const emailHref = `mailto:${email}`
+    const socials = [
+        { href: redes.instagram, icon: IconInstagram, label: 'Instagram' },
+        { href: redes.facebook, icon: IconFaceBook, label: 'Facebook' },
+        { href: redes.linkedin, icon: IconLinkedin, label: 'LinkedIn' },
+        { href: redes.twitter, icon: IconTwitter, label: 'Twitter' },
+    ]
+
     return (
         <div className="flex h-full flex-col justify-between gap-12 bg-primary px-6 pt-6 pb-10 text-white">
             <div className="space-y-8">
-                <Link href="/" className="block text-center" aria-label={`Inicio ${CLINICA.nombre}`}>
+                <Link href="/" className="block text-center" aria-label={`Inicio ${clinicName}`}>
                     <Image
-                        src={CLINICA.imagenes.logo}
-                        alt={`Logotipo ${CLINICA.nombre}`}
+                        src={images.logo ?? '/images/logo-header.svg'}
+                        alt={`Logotipo ${clinicName}`}
                         width={220}
                         height={120}
                         className="mx-auto h-auto w-40 md:w-52"
                         priority
                     />
                     <p className="mt-4 text-sm uppercase tracking-[0.38em] text-secondary/90">
-                        {CLINICA.slogan}
+                        {slogan}
                     </p>
                 </Link>
 
                 <SheetDescription className="text-gray-light">
-                    {CLINICA.descripcion}
+                    {descripcion}
                 </SheetDescription>
 
                 <NavLinks className="flex flex-col xl:hidden" />
@@ -56,18 +76,18 @@ export default function Sidebar() {
                     <h3 className="text-lg font-semibold text-secondary">Contáctanos</h3>
                     <div className="flex items-start gap-3 text-gray-light">
                         <MapPin className="mt-0.5 size-5 text-secondary" />
-                        <p>{CLINICA.direccion}</p>
+                        <p>{direccion}</p>
                     </div>
                     <div className="flex items-center gap-3 text-gray-light">
                         <Mail className="size-5 text-secondary" />
-                        <Link href={`mailto:${CLINICA.email}`} className="hover:text-secondary">
-                            {CLINICA.email}
+                        <Link href={emailHref} className="hover:text-secondary">
+                            {email}
                         </Link>
                     </div>
                     <div className="flex items-center gap-3 text-gray-light">
                         <Phone className="size-5 text-secondary" />
-                        <Link href={`tel:${CLINICA.telefono.replace(/\s+/g, '')}`} className="hover:text-secondary">
-                            {CLINICA.telefono}
+                        <Link href={telefonoHref} className="hover:text-secondary">
+                            {telefono || 'N/D'}
                         </Link>
                     </div>
                     <div className="block xl:hidden">
@@ -78,7 +98,7 @@ export default function Sidebar() {
                                     className="mt-5 w-full bg-secondary text-white shadow-[0_12px_30px_rgba(0,0,0,0.15)] transition hover:bg-secondary/80"
                                 >
                                     <CalendarClock className="size-5" />
-                                    {CLINICA.hero.ctas[0]?.label ?? 'Reserva tu cita'}
+                                    {primaryCtaLabel}
                                 </Button>
                             </DialogTrigger>
                             <DialogContent className="border-none bg-white/95 backdrop-blur-lg">

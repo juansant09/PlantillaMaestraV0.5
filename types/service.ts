@@ -29,10 +29,14 @@ const iconMap: Record<string, any> = {
     Zap,
 }
 
-export const serviceListings: IServiceData[] = CLINICA.serviciosDestacados.map((servicio, index) => ({
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const featuredServices = Array.isArray(clinic.serviciosDestacados) ? clinic.serviciosDestacados : []
+const defaultServiceImage = clinic.imagenes?.default ?? '/images/centro.jpg'
+
+export const serviceListings: IServiceData[] = featuredServices.map((servicio, index) => ({
     id: index + 1,
-    icon: iconMap[servicio.icon] ?? Sparkles,
-    title: servicio.titulo,
-    description: servicio.descripcion,
-    image: servicio.imagen ?? CLINICA.imagenes.default,
+    icon: iconMap[servicio?.icon as keyof typeof iconMap] ?? Sparkles,
+    title: servicio?.titulo ?? `Tratamiento ${index + 1}`,
+    description: servicio?.descripcion ?? '',
+    image: servicio?.imagen ?? defaultServiceImage,
 }))

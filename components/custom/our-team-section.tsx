@@ -14,12 +14,22 @@ import { ITeamData } from '@/types/team'
 import SectionHeading from '@/components/custom/section-heading'
 import { CLINICA } from '@/config/clinic'
 
-const teamData: ITeamData[] = CLINICA.equipo.map((profesional, index) => ({
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const equipo = Array.isArray(clinic.equipo) ? clinic.equipo : []
+const clinicRedes = clinic.redes ?? {}
+const redes = {
+    facebook: clinicRedes.facebook ?? '#',
+    twitter: clinicRedes.twitter ?? '#',
+    instagram: clinicRedes.instagram ?? '#',
+    linkedin: clinicRedes.linkedin ?? '#',
+}
+const clinicName = clinic.nombre ?? 'Clinica Vitalis'
+const teamData: ITeamData[] = equipo.map((profesional, index) => ({
     id: index + 1,
-    image: profesional.imagen,
-    alt: profesional.alt ?? `Especialista de ${CLINICA.nombre}`,
-    name: profesional.nombre,
-    speciality: profesional.especialidad,
+    image: profesional?.imagen ?? '/images/clinica-vitalis-equipo-clinico.webp',
+    alt: profesional?.alt ?? `Especialista de ${clinicName}`,
+    name: profesional?.nombre ?? `Especialista ${index + 1}`,
+    speciality: profesional?.especialidad ?? 'Especialista',
 }))
 
 export default function OurTeamSection() {
@@ -33,7 +43,7 @@ export default function OurTeamSection() {
                 tag="Conoce a nuestro equipo"
                 title={
                     <>
-                        En {CLINICA.nombre} contamos con{' '}
+                        En {clinicName} contamos con{' '}
                         <span className="font-normal italic">especialistas certificados y experimentados</span>
                     </>
                 }
@@ -81,7 +91,7 @@ export default function OurTeamSection() {
                             <div className="absolute inset-x-0 bottom-0 overflow-hidden bg-secondary/70 px-4 py-5 backdrop-blur-xs">
                                 <div className="-mt-14 mb-5 flex justify-center gap-2.5 duration-300 group-hover:mt-0">
                                     <Link
-                                        href={CLINICA.redes.facebook}
+                                        href={redes.facebook}
                                         className="grid size-8 place-content-center rounded-full border border-gray-200 text-gray-100 opacity-100 transition hover:opacity-70"
                                         target="_blank"
                                         rel="noreferrer"
@@ -90,7 +100,7 @@ export default function OurTeamSection() {
                                         <span className="sr-only">Facebook</span>
                                     </Link>
                                     <Link
-                                        href={CLINICA.redes.twitter}
+                                        href={redes.twitter}
                                         className="grid size-8 place-content-center rounded-full border border-gray-200 text-gray-100 opacity-100 transition hover:opacity-70"
                                         target="_blank"
                                         rel="noreferrer"
@@ -99,7 +109,7 @@ export default function OurTeamSection() {
                                         <span className="sr-only">Twitter</span>
                                     </Link>
                                     <Link
-                                        href={CLINICA.redes.instagram}
+                                        href={redes.instagram}
                                         className="grid size-8 place-content-center rounded-full border border-gray-200 text-gray-100 opacity-100 transition hover:opacity-70"
                                         target="_blank"
                                         rel="noreferrer"
@@ -108,7 +118,7 @@ export default function OurTeamSection() {
                                         <span className="sr-only">Instagram</span>
                                     </Link>
                                     <Link
-                                        href={CLINICA.redes.linkedin}
+                                        href={redes.linkedin}
                                         className="grid size-8 place-content-center rounded-full border border-gray-200 text-gray-100 opacity-100 transition hover:opacity-70"
                                         target="_blank"
                                         rel="noreferrer"

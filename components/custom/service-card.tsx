@@ -1,18 +1,22 @@
-﻿import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { IServiceData } from '@/types/service'
 import { CLINICA } from '@/config/clinic'
 
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+
 export default function ServiceCard({ data }: { data: IServiceData }) {
     const Icon = data?.icon
+    const clinicName = clinic.nombre ?? 'Clinica Vitalis'
+
     return (
         <div className="service-card group relative flex h-full flex-col overflow-hidden rounded-[24px] bg-white/90 shadow-soft backdrop-blur-lg transition lg:rounded-[28px]">
             {data?.image && (
                 <div className="relative h-48 w-full overflow-hidden bg-primary/10 sm:h-56">
                     <Image
                         src={data.image}
-                        alt={data?.title ?? `Tratamiento de ${CLINICA.nombre}`}
+                        alt={data?.title ?? `Tratamiento de ${clinicName}`}
                         fill
                         sizes="(min-width: 1024px) 25vw, (min-width: 768px) 45vw, 90vw"
                         className="object-cover transition duration-500 group-hover:scale-105"
@@ -25,18 +29,14 @@ export default function ServiceCard({ data }: { data: IServiceData }) {
                     {Icon && <Icon aria-hidden="true" className="size-6 shrink-0 stroke-[1.5] lg:size-7" />}
                 </div>
                 <div className="mt-4 pr-6">
-                    <h3 className="mb-3 text-xl font-semibold text-primary lg:text-2xl">
-                        {data?.title}
-                    </h3>
-                    <p className="mb-6 text-sm text-gray-strong lg:text-base">
-                        {data?.description}
-                    </p>
+                    <h3 className="mb-3 text-xl font-semibold text-primary lg:text-2xl">{data?.title}</h3>
+                    <p className="mb-6 text-sm text-gray-strong lg:text-base">{data?.description}</p>
                 </div>
                 <Link
-                    href={{ pathname: "/services/service-details", query: { id: data?.title ?? "" } }}
+                    href={{ pathname: '/services/service-details', query: { id: data?.title ?? '' } }}
                     className="group/read mt-auto inline-flex items-center gap-2.5 text-secondary transition hover:opacity-80"
                 >
-                    Leer más
+                    Leer mas
                     <ArrowRight className="size-5 transition-transform duration-300 group-hover/read:translate-x-1" />
                 </Link>
             </div>

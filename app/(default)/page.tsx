@@ -31,7 +31,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
-const homeDescription = `En ${CLINICA.nombre} combinamos tecnología avanzada y cuidado humano para pacientes de ${CLINICA.ciudad}. ${CLINICA.slogan}`
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const clinicName = clinic.nombre ?? 'Clinica Vitalis'
+const clinicCity = clinic.ciudad ?? 'Lucena'
+const clinicSlogan = clinic.slogan ?? ''
+const images = clinic.imagenes ?? {}
+const homeDescription = `En ${clinicName} combinamos tecnología avanzada y cuidado humano para pacientes de ${clinicCity}. ${clinicSlogan}`
 
 const iconMap: Record<string, any> = {
     CalendarClock,
@@ -46,11 +51,11 @@ const iconMap: Record<string, any> = {
 }
 
 export const metadata: Metadata = {
-    title: `Inicio | ${CLINICA.nombre}`,
+    title: `Inicio | ${clinicName}`,
     description: homeDescription,
     openGraph: {
         ...helper.openGraphData,
-        title: `Inicio | ${CLINICA.nombre}`,
+        title: `Inicio | ${clinicName}`,
         description: homeDescription,
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
@@ -61,9 +66,25 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
-    const hero = CLINICA.hero
-    const home = CLINICA.home
-    const faq = CLINICA.preguntasFrecuentes
+    const heroData = clinic.hero ?? {}
+    const heroResumen = Array.isArray(heroData.resumen) ? heroData.resumen : []
+    const heroCtas = Array.isArray(heroData.ctas) ? heroData.ctas : []
+    const hero = {
+        ...heroData,
+        badge: heroData.badge ?? '',
+        titulo: heroData.titulo ?? '',
+        descripcion: heroData.descripcion ?? '',
+        resumen: heroResumen,
+        ctas: heroCtas,
+    }
+    const home = clinic.home ?? {}
+    const homeAbout = home.about ?? {}
+    const homeHighlights = Array.isArray(home.destacados) ? home.destacados : []
+    const ctaPacientes = home.ctaPacientes ?? {}
+    const ctaBullets = Array.isArray(ctaPacientes.bullets) ? ctaPacientes.bullets : []
+    const homeValoraciones = Array.isArray(home.valoraciones) ? home.valoraciones : []
+    const faq = Array.isArray(clinic.preguntasFrecuentes) ? clinic.preguntasFrecuentes : []
+    const firmas = Array.isArray(clinic.firmas) ? clinic.firmas : []
 
     return (
         <>
@@ -83,14 +104,14 @@ export default function Home() {
                             </span>
                             <h1 className="hero-main-title mb-5 font-roboto text-3xl font-semibold text-primary md:text-4xl/snug xl:text-7xl/[80px]">
                                 {hero.titulo}
-                                <span className="font-normal italic"> {CLINICA.slogan}</span>
+                                <span className="font-normal italic"> {clinicSlogan}</span>
                             </h1>
                             <p className="w-full max-w-lg text-sm text-gray-strong lg:text-base">
                                 {hero.descripcion}
                             </p>
                         </div>
                         <div className="inline-flex flex-wrap gap-2.5 lg:gap-5">
-                            {hero.ctas.map((cta) => (
+                            {heroCtas.map((cta) => (
                                 <Link
                                     key={cta.href}
                                     href={cta.href}
@@ -109,8 +130,8 @@ export default function Home() {
                     </div>
                     <div className="hero-doctors-animate relative mx-auto mt-auto w-full max-w-xl rounded-[44px] bg-white/80 p-10 shadow-[0_30px_90px_rgba(76,82,96,0.25)] backdrop-blur">
                         <Image
-                            src={CLINICA.imagenes.heroHome}
-                            alt={`Equipo médico de ${CLINICA.nombre}`}
+                            src={images.heroHome ?? '/images/clinica-vitalis-hero-equipo.webp'}
+                            alt={`Equipo médico de ${clinicName}`}
                             width={776}
                             height={633}
                             priority
@@ -121,19 +142,19 @@ export default function Home() {
                             <div className="flex">
                                 <div className="size-10 shrink-0 overflow-hidden rounded-full border-2 border-gray-light xl:size-14">
                                     <Image
-                                        src={CLINICA.imagenes.heroHighlight}
+                                        src={images.heroHighlight ?? '/images/clinica-vitalis-paciente-satisfecho-2.webp'}
                                         width={52}
                                         height={52}
-                                        alt={`Paciente contento en ${CLINICA.nombre}`}
+                                        alt={`Paciente contento en ${clinicName}`}
                                         className="h-full w-full object-cover"
                                     />
                                 </div>
                                 <div className="relative -ml-3 size-10 shrink-0 overflow-hidden rounded-full border-2 border-gray-light xl:size-14">
                                     <Image
-                                        src={CLINICA.imagenes.pacientes}
+                                        src={images.pacientes ?? '/images/clinica-vitalis-paciente-satisfecho-1.webp'}
                                         width={52}
                                         height={52}
-                                        alt={`Paciente de ${CLINICA.nombre}`}
+                                        alt={`Paciente de ${clinicName}`}
                                         className="h-full w-full object-cover"
                                     />
                                 </div>
@@ -145,8 +166,8 @@ export default function Home() {
                         </div>
                         <div className="absolute right-8 top-8 hidden h-[120px] w-[180px] overflow-hidden rounded-2xl border-4 border-white bg-white/70 shadow-lg xl:block">
                             <Image
-                                src={CLINICA.imagenes.heroSupport}
-                                alt={`Atención personalizada en ${CLINICA.nombre}`}
+                                src={images.heroSupport ?? '/images/clinica-vitalis-atencion-personalizada.webp'}
+                                alt={`Atención personalizada en ${clinicName}`}
                                 fill
                                 sizes="180px"
                                 className="object-cover"
@@ -183,8 +204,8 @@ export default function Home() {
                 <div className="relative">
                     <div className="overflow-hidden rounded-[32px] bg-white shadow-[0_25px_70px_rgba(15,23,42,0.12)]">
                         <Image
-                            src={CLINICA.imagenes.equipo}
-                            alt={`Equipo clínico de ${CLINICA.nombre}`}
+                            src={images.equipo ?? '/images/clinica-vitalis-equipo-clinico.webp'}
+                            alt={`Equipo clínico de ${clinicName}`}
                             width={720}
                             height={540}
                             className="h-full w-full object-cover"
@@ -195,7 +216,7 @@ export default function Home() {
                     </div>
                     <div className="absolute -bottom-10 right-6 hidden w-60 overflow-hidden rounded-2xl border border-white/70 bg-white shadow-soft lg:block">
                         <Image
-                            src={CLINICA.imagenes.instalaciones}
+                            src={images.instalaciones ?? '/images/clinica-vitalis-instalaciones-recepcion.webp'}
                             alt="Instalaciones de la clínica"
                             width={320}
                             height={220}
@@ -205,19 +226,19 @@ export default function Home() {
                 </div>
                 <div>
                     <SectionHeading
-                        tag={home.about.tag}
+                        tag={homeAbout.tag}
                         title={
                             <>
-                                {home.about.titulo}
-                                <span className="font-normal italic">&nbsp;{CLINICA.ciudad}</span>
+                                {homeAbout.titulo}
+                                <span className="font-normal italic">&nbsp;{clinicCity}</span>
                             </>
                         }
-                        description={home.about.descripcion}
+                        description={homeAbout.descripcion}
                         className="mb-6 text-left"
                         descriptionClassName="max-w-xl"
                     />
                     <div className="grid gap-6">
-                        {home.destacados.map((card) => {
+                        {homeHighlights.map((card) => {
                             const Icon = iconMap[card.icon] ?? ShieldPlus
                             return (
                                 <div key={card.titulo} className="flex gap-4 rounded-2xl border border-secondary/15 bg-white/80 px-4 py-3 shadow-soft">
@@ -252,19 +273,19 @@ export default function Home() {
                         <SectionHeading
                             title={
                                 <>
-                                    {home.ctaPacientes.titulo}
+                                    {ctaPacientes.titulo}
                                     <span className="font-normal italic">
-                                        &nbsp;{CLINICA.ciudad}
+                                        &nbsp;{clinicCity}
                                     </span>
                                 </>
                             }
-                            description={home.ctaPacientes.descripcion}
+                            description={ctaPacientes.descripcion}
                             className="[&_.tag]:hidden text-left"
                             titleClassName="text-white max-w-3xl"
                             descriptionClassName="max-w-2xl text-gray-light"
                         />
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                            {home.ctaPacientes.bullets.map((bullet) => {
+                            {ctaBullets.map((bullet) => {
                                 const Icon = iconMap[bullet.icon] ?? CalendarClock
                                 return (
                                     <div
@@ -287,7 +308,7 @@ export default function Home() {
             </div>
 
             <div className="container grid gap-6 py-16 lg:grid-cols-2">
-                {home.valoraciones.map((item, index) => {
+                {homeValoraciones.map((item, index) => {
                     const Icon = iconMap[item.icon] ?? Wallet
                     const isDark = index % 2 === 1
                     return (
@@ -335,7 +356,7 @@ export default function Home() {
                 />
 
                 <div className="grid gap-6 lg:grid-cols-3">
-                    {CLINICA.firmas.map((firma) => (
+                    {firmas.map((firma) => (
                         <div
                             key={firma.titulo}
                             className="rounded-3xl border border-white/15 bg-white/80 p-6 shadow-soft backdrop-blur"

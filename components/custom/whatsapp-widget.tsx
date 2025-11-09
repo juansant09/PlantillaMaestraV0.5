@@ -1,21 +1,22 @@
 import { CLINICA } from '@/config/clinic'
 
-const whatsappNumber = (CLINICA.whatsapp.replace('https://wa.me/', '') || '').replace(/\D/g, '')
-
-const encodedMessage = encodeURIComponent(
-    `Hola, soy paciente de ${CLINICA.nombre} y me gustaría agendar una cita.`
-)
+const clinic = CLINICA ?? ({} as typeof CLINICA)
 
 const WhatsAppWidget = () => {
+    const whatsappUrl = clinic.whatsapp ?? ''
+    const numberSegment = whatsappUrl.replace('https://wa.me/', '')
+    const whatsappNumber = numberSegment.replace(/\D/g, '')
     if (!whatsappNumber) {
         return null
     }
 
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    const encodedMessage = encodeURIComponent(
+        `Hola, soy paciente de ${clinic.nombre ?? 'Clinica Vitalis'} y me gustaria agendar una cita.`
+    )
 
     return (
         <a
-            href={whatsappUrl}
+            href={`https://wa.me/${whatsappNumber}?text=${encodedMessage}`}
             target="_blank"
             rel="noreferrer"
             aria-label="Abrir conversacion de WhatsApp"

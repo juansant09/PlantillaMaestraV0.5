@@ -21,6 +21,10 @@ import IconMenu from '@/components/icons/icon-menu'
 import Image from 'next/image'
 import { CLINICA } from '@/config/clinic'
 
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const images = clinic.imagenes ?? {}
+const heroCtas = Array.isArray(clinic.hero?.ctas) ? clinic.hero.ctas : []
+
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false)
     const pathName = usePathname()
@@ -55,10 +59,14 @@ export default function Header() {
             <div className="container py-2 lg:py-0">
                 <div className="header-surface flex items-center justify-between rounded-2xl border border-white/10 bg-primary/85 px-4 py-3 shadow-[0_18px_48px_rgba(12,10,10,0.38)] backdrop-blur-lg transition lg:px-6 xl:px-8">
                     <div className="shrink-0">
-                        <Link href="/" className="relative inline-flex" aria-label={`Inicio ${CLINICA.nombre}`}>
+                        <Link
+                            href="/"
+                            className="relative inline-flex"
+                            aria-label={`Inicio ${clinic.nombre ?? 'Clínica Vitalis'}`}
+                        >
                             <Image
-                                src={CLINICA.imagenes.logo}
-                                alt={`Logotipo ${CLINICA.nombre}`}
+                                src={images.logo ?? '/images/logo-header.svg'}
+                                alt={`Logotipo ${clinic.nombre ?? 'Clínica Vitalis'}`}
                                 width={200}
                                 height={80}
                                 className="h-10 w-auto md:h-14"
@@ -77,7 +85,7 @@ export default function Header() {
                                     className="btn hidden whitespace-nowrap bg-secondary px-5 text-white shadow-[0_12px_30px_rgba(0,0,0,0.15)] transition hover:bg-secondary/80 lg:flex"
                                 >
                                     <CalendarClock className="size-5 shrink-0" />
-                                    {CLINICA.hero.ctas[0]?.label ?? 'Agenda tu cita'}
+                                    {heroCtas[0]?.label ?? 'Agenda tu cita'}
                                 </Button>
                             </DialogTrigger>
                             <DialogContent className="border-none bg-white/95 backdrop-blur-lg">

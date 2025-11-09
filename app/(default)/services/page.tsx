@@ -8,14 +8,19 @@ import { serviceListings } from '@/types/service'
 import { Metadata } from 'next'
 import { CheckCircle, Droplet, Sparkles, Waves, Zap } from 'lucide-react'
 
-const servicesDescription = `Descubre los tratamientos boutique de ${CLINICA.nombre} en ${CLINICA.ciudad}. ${CLINICA.slogan}`
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const clinicName = clinic.nombre ?? 'Clinica Vitalis'
+const clinicCity = clinic.ciudad ?? 'Lucena'
+const clinicSlogan = clinic.slogan ?? ''
+const images = clinic.imagenes ?? {}
+const servicesDescription = `Descubre los tratamientos boutique de ${clinicName} en ${clinicCity}. ${clinicSlogan}`
 
 export const metadata: Metadata = {
-    title: `Tratamientos | ${CLINICA.nombre}`,
+    title: `Tratamientos | ${clinicName}`,
     description: servicesDescription,
     openGraph: {
         ...helper.openGraphData,
-        title: `Tratamientos | ${CLINICA.nombre}`,
+        title: `Tratamientos | ${clinicName}`,
         description: servicesDescription,
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
@@ -32,7 +37,8 @@ const iconMap = {
     Waves,
 }
 
-const advantages = CLINICA.serviciosVentajas
+const advantages = Array.isArray(clinic.serviciosVentajas) ? clinic.serviciosVentajas : []
+const servicesList = Array.isArray(clinic.servicios) ? clinic.servicios : []
 
 export default function Services() {
     return (
@@ -42,13 +48,13 @@ export default function Services() {
                     <>
                         Tratamientos signature en
                         <span className="font-normal italic">
-                            &nbsp;{CLINICA.nombre}
+                            &nbsp;{clinicName}
                         </span>
                     </>
                 }
                 pageName="Tratamientos"
                 className="bg-cover bg-center"
-                backgroundImage={CLINICA.imagenes.heroServices}
+                backgroundImage={images.heroServices ?? '/images/hero-services.jpg'}
                 titleClassName="text-white"
                 pageNameClassName="text-white"
             />
@@ -56,7 +62,7 @@ export default function Services() {
             <div className="container my-16 lg:my-20">
                 <div className="relative mx-auto w-full rounded-[32px] border border-white/10 bg-white/75 p-6 shadow-soft backdrop-blur-xl sm:p-10">
                     <SectionHeading
-                        tag={`Colección ${CLINICA.nombre}`}
+                        tag={`Colección ${clinicName}`}
                         title={
                             <>
                                 Tratamientos que celebran
@@ -69,7 +75,7 @@ export default function Services() {
                         className="text-left"
                     />
                     <ul className="mt-6 grid gap-3 text-sm text-gray-strong sm:grid-cols-2 lg:grid-cols-4">
-                        {CLINICA.servicios.map((servicio) => (
+                        {servicesList.map((servicio) => (
                             <li
                                 key={servicio}
                                 className="flex items-center gap-2 rounded-2xl border border-secondary/10 bg-white/80 px-4 py-2 shadow-soft"
@@ -117,9 +123,9 @@ export default function Services() {
                     __html: `{
                         "@context": "https://schema.org",
                         "@type": "WebSite",
-                        "name": "Tratamientos ${CLINICA.nombre}",
+                        "name": "Tratamientos ${clinicName}",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Tratamientos boutique de ${CLINICA.nombre}.",
+                        "description": "Tratamientos boutique de ${clinicName}.",
                         "inLanguage": "es",
                         "image": "${process.env.NEXT_PUBLIC_APP_URL}/imagenes-ecofet/ecofet.svg",
                         "breadcrumb": {

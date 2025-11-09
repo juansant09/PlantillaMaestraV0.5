@@ -11,6 +11,8 @@ import {
 } from 'lucide-react'
 import { CLINICA } from '@/config/clinic'
 
+const clinic = CLINICA ?? ({} as typeof CLINICA)
+const agenda = clinic.agenda ?? {}
 const iconMap = {
     ShieldCheck,
     Eye,
@@ -20,9 +22,9 @@ const iconMap = {
 }
 
 export default function AppointmentSection() {
-    const motivos = CLINICA.agenda.motivos
-    const recordatorios = CLINICA.agenda.recordatorios
-    const calendlyUrl = CLINICA.agenda.url
+    const motivos = Array.isArray(agenda.motivos) ? agenda.motivos : []
+    const recordatorios = Array.isArray(agenda.recordatorios) ? agenda.recordatorios : []
+    const calendlyUrl = agenda.url ?? 'https://calendly.com/clinicavitalis/consulta'
 
     return (
         <div className="container grid items-center gap-12 py-16 lg:py-20 xl:grid-cols-2 xl:gap-[100px]">
@@ -40,19 +42,19 @@ export default function AppointmentSection() {
                     className="mb-0"
                 />
                 <div className="mt-10 divide-y-2 divide-dashed divide-secondary/15 xl:max-w-lg">
-                    {motivos.map((motivo) => {
-                        const Icon = iconMap[motivo.icon as keyof typeof iconMap] ?? ShieldCheck
+                    {motivos.map((motivo, index) => {
+                        const Icon = iconMap[motivo?.icon as keyof typeof iconMap] ?? ShieldCheck
                         return (
-                            <div key={motivo.titulo} className="flex gap-5 px-4 py-4 first:pb-4">
+                            <div key={motivo?.titulo ?? index} className="flex gap-5 px-4 py-4 first:pb-4">
                                 <span className="mt-0.5 text-secondary">
                                     <Icon className="size-8 shrink-0" />
                                 </span>
                                 <div>
                                     <h3 className="mb-1.5 text-lg font-semibold text-primary">
-                                        {motivo.titulo}
+                                        {motivo?.titulo ?? 'Atención personalizada'}
                                     </h3>
                                     <p className="text-sm text-gray lg:text-base">
-                                        {motivo.descripcion}
+                                        {motivo?.descripcion ?? ''}
                                     </p>
                                 </div>
                             </div>
@@ -87,13 +89,13 @@ export default function AppointmentSection() {
                     </div>
 
                     <div className="grid gap-4 rounded-2xl border border-secondary/10 bg-gradient-to-br from-white/90 to-accent/70 p-5 text-sm text-gray">
-                        {recordatorios.map((recordatorio) => {
+                        {recordatorios.map((recordatorio, index) => {
                             const Icon =
-                                iconMap[recordatorio.icon as keyof typeof iconMap] ?? MessageSquareMore
+                                iconMap[recordatorio?.icon as keyof typeof iconMap] ?? MessageSquareMore
                             return (
-                                <div key={recordatorio.texto} className="flex items-center gap-3">
+                                <div key={recordatorio?.texto ?? index} className="flex items-center gap-3">
                                     <Icon className="size-5 text-secondary" />
-                                    <span>{recordatorio.texto}</span>
+                                    <span>{recordatorio?.texto ?? ''}</span>
                                 </div>
                             )
                         })}
