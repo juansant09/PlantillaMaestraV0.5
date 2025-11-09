@@ -1,7 +1,8 @@
-﻿import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import { IServiceData } from "@/types/service"
+﻿import Image from 'next/image'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
+import { IServiceData } from '@/types/service'
+import { CLINICA } from '@/config/clinic'
 
 export default function ServiceCard({ data }: { data: IServiceData }) {
     const Icon = data?.icon
@@ -11,7 +12,7 @@ export default function ServiceCard({ data }: { data: IServiceData }) {
                 <div className="relative h-48 w-full overflow-hidden bg-primary/10 sm:h-56">
                     <Image
                         src={data.image}
-                        alt={data?.title ?? "Tratamiento Ecofet"}
+                        alt={data?.title ?? `Tratamiento de ${CLINICA.nombre}`}
                         fill
                         sizes="(min-width: 1024px) 25vw, (min-width: 768px) 45vw, 90vw"
                         className="object-cover transition duration-500 group-hover:scale-105"

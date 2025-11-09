@@ -3,6 +3,7 @@ import SectionHeading from '@/components/custom/section-heading'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { CLINICA } from '@/config/clinic'
 import helper from '@/lib/helper'
 import {
     ArrowUpRight,
@@ -18,15 +19,15 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
+const contactDescription = `Comunícate con ${CLINICA.nombre} en ${CLINICA.ciudad} para reservar turnos, resolver dudas y recibir asistencia personalizada. ${CLINICA.slogan}`
+
 export const metadata: Metadata = {
-    title: 'Contacto | Ecofet Centro Médico Estético',
-    description:
-        'Comunícate con Ecofet Centro Médico Estético para reservar turnos, resolver dudas y recibir asistencia personalizada.',
+    title: `Contacto | ${CLINICA.nombre}`,
+    description: contactDescription,
     openGraph: {
         ...helper.openGraphData,
-        title: 'Contacto | Ecofet Centro Médico Estético',
-        description:
-            'Comunícate con Ecofet Centro Médico Estético para reservar turnos, resolver dudas y recibir asistencia personalizada.',
+        title: `Contacto | ${CLINICA.nombre}`,
+        description: contactDescription,
         url: process.env.NEXT_PUBLIC_APP_URL,
         type: 'website',
     },
@@ -36,6 +37,9 @@ export const metadata: Metadata = {
 }
 
 export default function ContactUs() {
+    const telefonoHref = CLINICA.telefono.replace(/\s+/g, '')
+    const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(CLINICA.ciudad)}&output=embed`
+
     return (
         <>
             <HeroSection
@@ -50,7 +54,7 @@ export default function ContactUs() {
                         <SectionHeading
                             className="mb-0"
                             titleClassName="mb-0 max-w-sm"
-                            tag="Estamos para ayudarte"
+                            tag={`${CLINICA.nombre} responde`}
                             title={
                                 <>
                                     ¿Tienes dudas
@@ -59,7 +63,7 @@ export default function ContactUs() {
                                     </span>
                                 </>
                             }
-                            description="Nuestro equipo de admisiones gestiona turnos, presupuestos y urgencias con la rapidez y calidez que mereces."
+                            description={`Nuestro equipo en ${CLINICA.ciudad} gestiona turnos, presupuestos y urgencias con la rapidez y calidez que mereces.`}
                             descriptionClassName="max-w-md"
                         />
                         <div className="mt-8 flex flex-col divide-y divide-dashed divide-secondary/20">
@@ -72,10 +76,10 @@ export default function ContactUs() {
                                         Reserva telefónica:
                                     </p>
                                     <Link
-                                        href="tel:+34613296952"
+                                        href={`tel:${telefonoHref}`}
                                         className="block font-semibold text-primary transition hover:underline"
                                     >
-                                        +34 613 29 69 52
+                                        {CLINICA.telefono}
                                     </Link>
                                 </div>
                             </div>
@@ -84,12 +88,14 @@ export default function ContactUs() {
                                     <Send className="size-5 text-white" />
                                 </span>
                                 <div className="space-y-1">
-                                    <p className="text-gray">Escríbenos:</p>
+                                    <p className="text-gray">WhatsApp directo:</p>
                                     <Link
-                                        href="mailto:info@vitalis.com"
+                                        href={CLINICA.whatsapp}
+                                        target="_blank"
+                                        rel="noreferrer"
                                         className="block font-semibold text-primary transition hover:underline"
                                     >
-                                        info@vitalis.com
+                                        Escríbenos ahora
                                     </Link>
                                 </div>
                             </div>
@@ -100,7 +106,7 @@ export default function ContactUs() {
                                 <div className="space-y-1">
                                     <p className="text-gray">Visítanos:</p>
                                     <p className="font-semibold text-primary">
-                                        Avenida del Parque 18, Madrid, España
+                                        {CLINICA.nombre} · {CLINICA.ciudad}, España
                                     </p>
                                 </div>
                             </div>
@@ -178,10 +184,11 @@ export default function ContactUs() {
 
             <div className="mt-16 lg:-mt-32">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12138.8210460048!2d-3.7035825!3d40.4168905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd422997823b640d%3A0x7d0fd5624d1f1ca2!2sMadrid!5e0!3m2!1ses!2ses!4v1733926400000!5m2!1ses!2ses"
+                    src={mapUrl}
                     width="100%"
                     height="500"
                     loading="lazy"
+                    title={`Ubicación de ${CLINICA.nombre}`}
                     allowFullScreen
                 ></iframe>
             </div>
@@ -192,9 +199,9 @@ export default function ContactUs() {
                     __html: `{
                         "@context": "https://schema.org",
                         "@type": "WebSite",
-                        "name": "Contacto",
+                        "name": "Contacto ${CLINICA.nombre}",
                         "url": "${process.env.NEXT_PUBLIC_APP_URL}",
-                        "description": "Comunícate con Ecofet Centro Médico Estético para reservas y asistencia.",
+                        "description": "Comunícate con ${CLINICA.nombre} para reservas y asistencia.",
                         "inLanguage": "es",
                         "image": "${process.env.NEXT_PUBLIC_APP_URL}/images/logo.png",
                         "breadcrumb": {

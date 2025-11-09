@@ -9,12 +9,14 @@ const HeroSection = ({
     className,
     titleClassName,
     pageNameClassName,
+    backgroundImage,
 }: {
     title: React.ReactNode
     pageName?: string
     className?: string
     titleClassName?: string
     pageNameClassName?: string
+    backgroundImage?: string
 }) => {
     return (
         <div
@@ -22,6 +24,13 @@ const HeroSection = ({
                 'hero-gradient relative overflow-hidden bg-cover bg-no-repeat pt-[120px]',
                 className,
             )}
+            style={
+                backgroundImage
+                    ? {
+                          backgroundImage: `url(${backgroundImage})`,
+                      }
+                    : undefined
+            }
         >
             <span className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(200,164,106,0.25),rgba(28,26,29,0.85))] mix-blend-multiply"></span>
             <span className="absolute inset-0 bg-gradient-to-b from-primary/50 via-primary/70 to-primary/85"></span>

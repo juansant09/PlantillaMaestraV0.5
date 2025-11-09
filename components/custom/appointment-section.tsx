@@ -9,12 +9,21 @@ import {
     PhoneCall,
     ShieldCheck,
 } from 'lucide-react'
+import { CLINICA } from '@/config/clinic'
 
-const CALENDLY_URL =
-    process.env.NEXT_PUBLIC_CALENDLY_URL ??
-    'https://calendly.com/ecofet-centro-medico/consulta-inicial'
+const iconMap = {
+    ShieldCheck,
+    Eye,
+    Headset,
+    PhoneCall,
+    MessageSquareMore,
+}
 
 export default function AppointmentSection() {
+    const motivos = CLINICA.agenda.motivos
+    const recordatorios = CLINICA.agenda.recordatorios
+    const calendlyUrl = CLINICA.agenda.url
+
     return (
         <div className="container grid items-center gap-12 py-16 lg:py-20 xl:grid-cols-2 xl:gap-[100px]">
             <div>
@@ -31,45 +40,24 @@ export default function AppointmentSection() {
                     className="mb-0"
                 />
                 <div className="mt-10 divide-y-2 divide-dashed divide-secondary/15 xl:max-w-lg">
-                    <div className="flex gap-5 px-4 pb-4">
-                        <span className="mt-0.5 text-secondary">
-                            <ShieldCheck className="size-8 shrink-0" />
-                        </span>
-                        <div>
-                            <h3 className="mb-1.5 text-lg font-semibold text-primary">
-                                Servicios seguros y confiables
-                            </h3>
-                            <p className="text-sm text-gray lg:text-base">
-                                Protocolos médicos certificados, aparatología de vanguardia y especialistas atentos a cada detalle de tu bienestar.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="flex gap-5 px-4 py-4">
-                        <span className="mt-0.5 text-secondary">
-                            <Eye className="size-8 shrink-0" />
-                        </span>
-                        <div>
-                            <h3 className="mb-1.5 text-lg font-semibold text-primary">
-                                Diagnóstico preciso y personalizado
-                            </h3>
-                            <p className="text-sm text-gray lg:text-base">
-                                Evaluamos tu historia clínica, estilo de vida y objetivos estéticos para diseñar un plan a tu medida.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="flex gap-5 px-4 py-4">
-                        <span className="mt-0.5 text-secondary">
-                            <Headset className="size-8 shrink-0" />
-                        </span>
-                        <div>
-                            <h3 className="mb-1.5 text-lg font-semibold text-primary">
-                                Acompañamiento constante
-                            </h3>
-                            <p className="text-sm text-gray lg:text-base">
-                                Nuestro equipo está disponible para resolver dudas antes, durante y después de tu tratamiento.
-                            </p>
-                        </div>
-                    </div>
+                    {motivos.map((motivo) => {
+                        const Icon = iconMap[motivo.icon as keyof typeof iconMap] ?? ShieldCheck
+                        return (
+                            <div key={motivo.titulo} className="flex gap-5 px-4 py-4 first:pb-4">
+                                <span className="mt-0.5 text-secondary">
+                                    <Icon className="size-8 shrink-0" />
+                                </span>
+                                <div>
+                                    <h3 className="mb-1.5 text-lg font-semibold text-primary">
+                                        {motivo.titulo}
+                                    </h3>
+                                    <p className="text-sm text-gray lg:text-base">
+                                        {motivo.descripcion}
+                                    </p>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             <div className="relative overflow-hidden rounded-2xl border border-secondary/15 bg-white shadow-[0_20px_60px_rgba(76,82,96,0.15)] backdrop-blur">
@@ -91,26 +79,24 @@ export default function AppointmentSection() {
 
                     <div className="overflow-hidden rounded-2xl border border-secondary/15 bg-white shadow-[0_10px_40px_rgba(82,86,97,0.12)]">
                         <iframe
-                            src={`${CALENDLY_URL}?hide_landing_page_details=1&hide_event_type_details=1`}
+                            src={`${calendlyUrl}?hide_landing_page_details=1&hide_event_type_details=1`}
                             title="Reservar cita con Ecofet"
                             className="h-[620px] w-full"
                             allowFullScreen
                         />
                     </div>
 
-                    <div className="grid gap-4 rounded-2xl border border-secondary/10 bg-gradient-to-br from-white/90 to-[#f1f3f7]/70 p-5 text-sm text-gray">
-                        <div className="flex items-center gap-3">
-                            <PhoneCall className="size-5 text-secondary" />
-                            <span>
-                                Prefieres hablar con alguien? Llámanos y te ayudamos a coordinar tu cita.
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <MessageSquareMore className="size-5 text-secondary" />
-                            <span>
-                                Recibirás recordatorios por correo y WhatsApp para que no pierdas tu turno.
-                            </span>
-                        </div>
+                    <div className="grid gap-4 rounded-2xl border border-secondary/10 bg-gradient-to-br from-white/90 to-accent/70 p-5 text-sm text-gray">
+                        {recordatorios.map((recordatorio) => {
+                            const Icon =
+                                iconMap[recordatorio.icon as keyof typeof iconMap] ?? MessageSquareMore
+                            return (
+                                <div key={recordatorio.texto} className="flex items-center gap-3">
+                                    <Icon className="size-5 text-secondary" />
+                                    <span>{recordatorio.texto}</span>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>

@@ -25,6 +25,7 @@ export default function NavLink({
     targetPath,
 }: IProp) {
     const pathName = usePathname()
+    const isHome = pathName === '/'
     const [isScrolled, setIsScrolled] = useState(false)
     useEffect(() => {
         const handleScroll = () => {
@@ -40,6 +41,11 @@ export default function NavLink({
         }
     }, [])
 
+    const matchesTarget =
+        targetPath && targetPath !== '/'
+            ? pathName.startsWith(targetPath)
+            : targetPath === '/' && pathName === '/'
+
     return (
         <Link
             href={href}
@@ -50,8 +56,8 @@ export default function NavLink({
                     active:
                         active ||
                         (!active && pathName === href) ||
-                        (targetPath && pathName.startsWith(targetPath)),
-                    scrolled: isScrolled,
+                        matchesTarget,
+                    scrolled: isScrolled && isHome,
                 },
                 'nav-link',
                 className,

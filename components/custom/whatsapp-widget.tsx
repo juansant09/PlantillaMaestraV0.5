@@ -1,11 +1,10 @@
-const whatsappNumber =
-    (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '34613296952').replace(/\D/g, '')
+import { CLINICA } from '@/config/clinic'
 
-const whatsappMessage =
-    process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
-    'Hola, me gustaria agendar una cita en Ecofet Centro Médico Estético.'
+const whatsappNumber = (CLINICA.whatsapp.replace('https://wa.me/', '') || '').replace(/\D/g, '')
 
-const encodedMessage = encodeURIComponent(whatsappMessage)
+const encodedMessage = encodeURIComponent(
+    `Hola, soy paciente de ${CLINICA.nombre} y me gustaría agendar una cita.`
+)
 
 const WhatsAppWidget = () => {
     if (!whatsappNumber) {
@@ -20,7 +19,7 @@ const WhatsAppWidget = () => {
             target="_blank"
             rel="noreferrer"
             aria-label="Abrir conversacion de WhatsApp"
-            className="group fixed bottom-6 right-6 z-40 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:translate-y-[-2px] hover:bg-[#1ebe5d] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group fixed bottom-6 right-6 z-40 flex size-14 items-center justify-center rounded-full bg-primario text-secondary shadow-xl transition-all duration-300 hover:translate-y-[-2px] hover:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
             <svg
                 xmlns="http://www.w3.org/2000/svg"

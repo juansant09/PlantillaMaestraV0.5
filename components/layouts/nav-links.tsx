@@ -1,5 +1,6 @@
 import NavLink from '@/components/ui/nav-link'
 import { cn } from '@/lib/utils'
+import { CLINICA } from '@/config/clinic'
 
 const NavLinks = ({ className }: any) => {
     return (
@@ -9,23 +10,13 @@ const NavLinks = ({ className }: any) => {
                 className,
             )}
         >
-            <li>
-                <NavLink href="/">Inicio</NavLink>
-            </li>
-            <li>
-                <NavLink href="/about-us">Sobre nosotros</NavLink>
-            </li>
-            <li>
-                <NavLink href="/services" targetPath="/service">
-                    Servicios
-                </NavLink>
-            </li>
-            <li>
-                <NavLink href="/doctors">Especialistas</NavLink>
-            </li>
-            <li>
-                <NavLink href="/contact-us">Contacto</NavLink>
-            </li>
+            {CLINICA.menu.map((item) => (
+                <li key={item.href}>
+                    <NavLink href={item.href} targetPath={item.href}>
+                        {item.label}
+                    </NavLink>
+                </li>
+            ))}
         </ul>
     )
 }

@@ -15,100 +15,41 @@ import {
     UserPlus2,
 } from 'lucide-react'
 import CountsUp from '@/components/custom/counts-up'
+import { CLINICA } from '@/config/clinic'
 
-const testimonialdata: ITestimonialData[] = [
-    {
-        id: 1,
-        image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=256&q=80',
-        name: 'Sarah Johnson',
-        speciality: 'Nutricionista',
-        message:
-            '"¡La atención que recibí fue excepcional! El equipo es muy atento y los servicios superaron todas mis expectativas."',
-    },
-    {
-        id: 2,
-        image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=256&q=80',
-        name: 'Dr. Miguel Lopez',
-        speciality: 'Cardiólogo',
-        message:
-            '"Su compromiso con la salud del paciente es admirable. Me sentí acompañado y valorado durante todo mi tratamiento."',
-    },
-    {
-        id: 3,
-        image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=256&q=80',
-        name: 'Emily Carter',
-        speciality: 'Pediatra',
-        message:
-            '"Servicio increíble y un ambiente muy cordial. Se nota que realmente se preocupan por el bienestar de sus pacientes."',
-    },
-    {
-        id: 4,
-        image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=256&q=80',
-        name: 'David Thompson',
-        speciality: 'Cirujano ortopédico',
-        message:
-            '"Atención profesional y confiable en cada paso. Recomiendo ampliamente su experiencia médica."',
-    },
-]
+const testimonialdata: ITestimonialData[] = CLINICA.testimonios.map((testimonio, index) => ({
+    id: index + 1,
+    image: testimonio.imagen,
+    name: testimonio.nombre,
+    speciality: testimonio.especialidad,
+    message: `“${testimonio.mensaje}”`,
+}))
 
-const floatingProfiles = [
-    {
-        id: 'profile-1',
-        src: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=200&q=80',
-        alt: 'Retrato de paciente sonriendo',
-        width: 112,
-        height: 112,
-        className:
-            'left-0 top-6 w-20 h-20 sm:-left-28 sm:top-2 sm:w-24 sm:h-24 opacity-80',
-    },
-    {
-        id: 'profile-2',
-        src: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=200&q=80',
-        alt: 'Paciente relajada durante su consulta',
-        width: 104,
-        height: 104,
-        className:
-            'right-0 top-12 w-16 h-16 sm:-right-28 sm:top-8 sm:w-20 sm:h-20 opacity-75',
-    },
-    {
-        id: 'profile-3',
-        src: 'https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=200&q=80',
-        alt: 'Especialista del equipo Ecofet sonriendo',
-        width: 120,
-        height: 120,
-        className:
-            'left-2 bottom-2 w-20 h-20 sm:-left-24 sm:bottom-8 sm:w-24 sm:h-24 opacity-80',
-    },
-    {
-        id: 'profile-4',
-        src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-        alt: 'Paciente recuperado disfrutando del resultado',
-        width: 120,
-        height: 120,
-        className:
-            'right-6 bottom-0 w-20 h-20 sm:-right-24 sm:bottom-10 sm:w-24 sm:h-24 opacity-80',
-    },
-    {
-        id: 'profile-5',
-        src: 'https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?auto=format&fit=crop&w=200&q=80',
-        alt: 'Paciente feliz tras su tratamiento estético',
-        width: 96,
-        height: 96,
-        className:
-            'left-1/2 top-0 hidden -translate-x-1/2 md:block w-16 h-16 sm:-top-10 sm:w-20 sm:h-20 opacity-70',
-    },
-]
+const floatingProfiles = CLINICA.testimoniosPerfiles
+
+const statsIconMap = {
+    ShieldPlus,
+    UserPlus2,
+    BriefcaseMedical,
+    Ribbon,
+}
+
 export default function TestimonialSection() {
     return (
-        <div className="overflow-hidden bg-gray-100 bg-[url(/images/map.png)] bg-contain bg-center bg-no-repeat">
+        <div
+            className="overflow-hidden bg-gray-100 bg-contain bg-center bg-no-repeat"
+            style={{
+                backgroundImage: `url(${CLINICA.imagenes.testimoniosFondo})`,
+            }}
+        >
             <div className="container relative mx-auto pt-12 text-center sm:max-w-4xl lg:pt-20">
                 {floatingProfiles.map((profile) => (
                     <Image
                         key={profile.id}
                         src={profile.src}
                         alt={profile.alt}
-                        width={profile.width}
-                        height={profile.height}
+                        width={profile.width ?? 96}
+                        height={profile.height ?? 96}
                         className={`jump absolute rounded-full border-4 border-white object-cover shadow-lg ${profile.className}`}
                     />
                 ))}
@@ -180,66 +121,24 @@ export default function TestimonialSection() {
             <div className="container">
                 <div className="rounded-full bg-gray-light p-px"></div>
                 <div className="grid grid-cols-2 gap-x-3 gap-y-7 py-14 md:grid-cols-4 lg:py-20">
-                    <div className="space-y-1">
-                        <div className="flex flex-col items-center justify-center gap-3 text-2xl font-bold sm:text-4xl">
-                            <ShieldPlus className="size-10 shrink-0 text-secondary" />
-                            <CountsUp
-                                start={500}
-                                end={1200}
-                                duration={3}
-                                suffix="+"
-                                delay={0}
-                            />
-                        </div>
-                        <p className="text-center text-gray">
-                            Pacientes tratados con éxito
-                        </p>
-                    </div>
-                    <div className="space-y-1">
-                        <div className="flex flex-col items-center justify-center gap-3 text-2xl font-bold sm:text-4xl">
-                            <UserPlus2 className="size-10 shrink-0 text-secondary" />
-                            <CountsUp
-                                start={0}
-                                end={8}
-                                duration={3}
-                                delay={0}
-                                suffix="+"
-                            />
-                        </div>
-                        <p className="text-center text-gray">
-                            Profesionales de la salud
-                        </p>
-                    </div>
-                    <div className="space-y-1">
-                        <div className="flex flex-col items-center justify-center gap-3 text-2xl font-bold sm:text-4xl">
-                            <Ribbon className="size-10 shrink-0 text-secondary" />
-                            <CountsUp
-                                start={0}
-                                end={870}
-                                duration={3}
-                                delay={0}
-                                suffix="+"
-                            />
-                        </div>
-                        <p className="text-center text-gray">
-                            Casos oncológicos
-                        </p>
-                    </div>
-                    <div className="space-y-1">
-                        <div className="flex flex-col items-center justify-center gap-3 text-2xl font-bold sm:text-4xl">
-                            <BriefcaseMedical className="size-10 shrink-0 text-secondary" />
-                            <CountsUp
-                                start={0}
-                                end={20}
-                                duration={2}
-                                delay={0}
-                                suffix="+"
-                            />
-                        </div>
-                        <p className="text-center text-gray">
-                            Años de experiencia
-                        </p>
-                    </div>
+                    {CLINICA.stats.map((stat) => {
+                        const Icon = statsIconMap[stat.icon as keyof typeof statsIconMap] ?? ShieldPlus
+                        return (
+                            <div key={stat.descripcion} className="space-y-1">
+                                <div className="flex flex-col items-center justify-center gap-3 text-2xl font-bold sm:text-4xl">
+                                    <Icon className="size-10 shrink-0 text-secondary" />
+                                    <CountsUp
+                                        start={0}
+                                        end={stat.valor}
+                                        duration={3}
+                                        delay={0}
+                                        suffix={stat.sufijo}
+                                    />
+                                </div>
+                                <p className="text-center text-gray">{stat.descripcion}</p>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </div>

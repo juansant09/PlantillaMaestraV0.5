@@ -1,16 +1,9 @@
 import Image from 'next/image'
-
-const partnerLogos = [
-    { src: '/images/logo-1.svg', alt: 'Logo colaborador 1' },
-    { src: '/images/logo-3.svg', alt: 'Logo colaborador 2' },
-    { src: '/images/logo-4.svg', alt: 'Logo colaborador 3' },
-    { src: '/images/logo-5.svg', alt: 'Logo colaborador 4' },
-    { src: '/images/logo-6.svg', alt: 'Logo colaborador 5' },
-    { src: '/images/logo-7.svg', alt: 'Logo colaborador 6' },
-]
+import { CLINICA } from '@/config/clinic'
 
 export default function PartnerSection() {
-    const marqueeItems = [...partnerLogos, ...partnerLogos]
+    const logos = CLINICA.partners.length ? CLINICA.partners : CLINICA.imagenes.partners
+    const marqueeItems = [...logos, ...logos]
 
     return (
         <div className="overflow-hidden bg-gray-light/50 py-10">

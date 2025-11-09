@@ -1,20 +1,29 @@
+const withOpacityValue = (variable) => {
+    return ({ opacityValue }) => {
+        if (opacityValue !== undefined) {
+            return `rgb(var(${variable}) / ${opacityValue})`
+        }
+        return `rgb(var(${variable}) / 1)`
+    }
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        primary: "#1C1A1D", // charcoal Ecofet
-        secondary: "#C8A46A", // oro suave
-        accent: "#6FD0C4", // agua marina
-        muted: "#F5EFE4",
-        charcoal: "#2A2729",
-      },
+    content: [
+        './app/**/*.{js,ts,jsx,tsx,mdx}',
+        './components/**/*.{js,ts,jsx,tsx,mdx}',
+        './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    ],
+    theme: {
+        extend: {
+            colors: {
+                primary: withOpacityValue('--color-primario-rgb'),
+                secondary: withOpacityValue('--color-secundario-rgb'),
+                accent: withOpacityValue('--color-base-rgb'),
+                muted: '#f5efe4',
+                charcoal: '#2a2729',
+            },
+        },
     },
-  },
-  plugins: [],
+    plugins: [],
 }
